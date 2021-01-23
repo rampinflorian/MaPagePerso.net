@@ -1,0 +1,588 @@
+$version: "1.0.0";
+
+/* ------------------------------------------------
+ Author: ArtStyles (Art)
+ 
+ Template Name: vCard
+ version: #{$version}
+------------------------------------------------ */
+
+/* ------------------------------------------------
+
+ - General Styles
+ - Typography
+ - Form
+ - Preloader
+ - Header
+ - Sections
+  
+------------------------------------------------ */
+
+// Variables
+@import 'variables/vars';
+@import 'variables/mixins';
+@import 'variables/media';
+
+/* -----------------------------------------------------------------
+    - General Styles
+----------------------------------------------------------------- */
+
+body {
+  background: $bg-dark-color;
+  color: $body-dark-color;
+}
+
+// Background
+.bg {
+  &-triangles {
+    background-color: $bg-dark-color;
+    background-image: url(../images/triangles-top.svg),
+	                  url(../images/triangles-bottom.svg);
+  }
+}
+
+/* -----------------------------------------------------------------
+    - Typography
+----------------------------------------------------------------- */
+
+h1, h2, h3, h4, h5, h6 {
+  color: $heading-dark-color;
+}
+
+.title {
+  &__separate {
+    &::before {
+	  background-color: $accent-dark-color;
+    }
+  }
+}
+  
+.overhead {
+  color: $body-dark-color;
+}
+
+.block-quote {
+  &::before {
+    background-image: url(../icons/icon-quote-dark.svg);
+  }
+  
+  &__author {
+	&::before {
+	  background-color: $body-dark-color;
+	}
+  }
+}
+
+iframe {
+  background-color: $body-color; 
+}
+
+/* -----------------------------------------------------------------
+    - Form
+----------------------------------------------------------------- */
+
+// Input Text
+%formStyle {
+  background-color: $overlay-dark-color;
+  border-color: $overlay-dark-color;
+  color: $body-dark-color;
+}
+
+%formStyle-focus {
+  background-color: $surface-dark-color;
+  border-color: $border-dark-color;
+  color: $body-dark-color;
+}
+
+.form-control {
+  @extend %formStyle;
+  
+  &:focus {
+    @extend %formStyle-focus;
+  }
+}
+
+.textarea {
+  @extend %formStyle;
+  
+  &:focus {
+    @extend %formStyle-focus;
+  }
+}
+
+.form-group {
+  .font-icon {
+    color: $body-dark-color;
+  }
+}
+
+.form-control::-webkit-input-placeholder {
+  color: $gray-dark-color;
+}
+
+.form-control::-moz-placeholder {
+  color: $gray-dark-color;
+}
+
+.form-control:-ms-input-placeholder {
+  color: $gray-dark-color;
+}
+
+.form-control::-ms-input-placeholder {
+  color: $gray-dark-color;
+}
+
+.form-control::placeholder {
+  color: $gray-dark-color;
+}
+
+// Checkbox
+.custom-control-input {
+  &:focus ~ .custom-control-label::before {
+    box-shadow: 0 0 0 0.2rem rgba($accent-dark-color, 0.25);
+  }
+
+  &:focus:not(:checked) ~ .custom-control-label::before {
+    border-color: $accent-dark-color;
+  }
+
+  &:not(:disabled):active~.custom-control-label::before {
+    border-color: $white-color;
+  }
+  
+  &:checked~.custom-control-label::before {
+    border-color: $accent-dark-color;
+    background-color: $accent-dark-color;
+  }
+}
+
+.custom-control-label {
+  &::before {
+    border-color: $body-dark-color;
+  }	
+}
+
+// Select
+select,
+.custom-select {
+  @extend %formStyle;
+  
+  &:focus {
+    @extend %formStyle-focus;
+  }
+  
+  option {
+    color: $body-dark-color;
+  }
+}
+
+// Dropdown
+.dropdown {
+  &-menu {
+    background-color: $border-dark-color;
+    box-shadow: 0 rem(8px) rem(40px) rgba(0,0,0,.5);
+    color: $body-dark-color;
+	
+	&::before {
+      border-top: rem(6px) solid $border-dark-color;
+	}
+  }
+  
+  &.dropup {
+    .dropdown-menu {
+      &::before {
+	    border-top: rem(6px) solid $border-dark-color;
+	  }
+	}  
+  }
+}
+
+// Tooltips
+.tooltip {
+  &-inner {
+    background-color: $body-dark-color;
+	box-shadow: 0 rem(16px) rem(32px) rgba(0,0,0,.25), 
+                0 rem(2px) rem(16px) rgba(0,0,0,.5);
+  }
+}
+
+.bs-tooltip-top .arrow::before, 
+.bs-tooltip-auto[x-placement^="top"] .arrow::before {
+  border-top-color: $body-dark-color;
+}
+
+.bs-tooltip-right .arrow::before, 
+.bs-tooltip-auto[x-placement^="right"] .arrow::before {
+  border-right-color: $body-dark-color;
+}
+
+.bs-tooltip-left .arrow::before, 
+.bs-tooltip-auto[x-placement^="left"] .arrow::before {
+  border-left-color: $body-dark-color;
+}
+
+.bs-tooltip-bottom .arrow::before, 
+.bs-tooltip-auto[x-placement^="bottom"] .arrow::before {
+  border-bottom-color: $body-dark-color;
+}
+
+
+// Button
+.btn {
+  background-image: $gradient-dark-accent;
+  color: $heading-dark-color;
+  
+  &:hover {
+    color: $heading-dark-color;
+  }
+}
+
+/* -----------------------------------------------------------------
+    - Preloader
+----------------------------------------------------------------- */
+
+.preloader {
+  background-color: $bg-dark-color;
+
+  &__progress {
+    background: $bg-dark-color;
+	
+	span {
+	  background: $accent-dark-color;
+	}
+  }
+}
+
+
+.circle-pulse__1 {
+  background-color: $accent-dark-color;
+}
+
+.circle-pulse__2 {
+  background-color: rgba($accent-dark-color,.7);
+}
+
+/* -----------------------------------------------------------------
+    - Header
+----------------------------------------------------------------- */
+
+.header {
+  &__left {
+	&::before {
+	  background-color: $border-dark-color;
+	}
+  }
+  
+  &__photo {
+	background-color: #23262B;
+	border-color: #23262B;
+  }
+  
+  &__social {
+    a {
+      color: $gray-dark-color;
+    }
+	
+	a:hover {
+      color: $accent-dark-color;
+    }
+  }
+  
+  &__contact {
+    color: $heading-dark-color;
+  }
+}
+
+/* -----------------------------------------------------------------
+    - Sections
+----------------------------------------------------------------- */
+
+// Box
+.box {
+  background-color: $surface-dark-color;
+  box-shadow: $box-shadow-dark;
+  
+  &__border {
+    border-color: $border-dark-color;
+  }
+}
+
+// Social
+.social {
+  &__link {
+    color: $heading-dark-color;
+  }
+}
+
+/* -----------------------------------------------------------------
+    - Cases
+----------------------------------------------------------------- */
+
+.case-item {
+  border-color: $border-dark-color;
+}
+
+/* -----------------------------------------------------------------
+    - Navbar
+----------------------------------------------------------------- */
+
+.sidebar {
+  @media only screen and (max-width: $large) {
+    border-color: $border-dark-color;
+  }
+  
+  @media only screen and (max-width: $small) {
+	box-shadow: 0px 20px 40px rgba(103, 118, 128, 0.2);
+  }
+}
+
+.nav {
+  &__item {
+	a {
+	  background-color: $overlay-dark-color;
+	  color: $body-dark-color;
+	  
+	  &:hover {
+	    color: $accent-dark-color;
+	  }
+	  
+	  @media only screen and (max-width: $small) {
+	    background-color: transparent;
+	  }
+	}
+	
+	
+	a.active {
+	  background-image: $gradient-dark-accent;
+	  box-shadow: inset -4px -4px 5px rgba(0, 0, 0, 0.2), 
+	              inset 4px 4px 5px rgba(255, 255, 255, 0.23);
+	  color: $heading-dark-color;
+	  
+	  &:hover {
+	    color: $heading-dark-color;
+	  }
+	  
+	  @media only screen and (max-width: $small) {
+	    background-image: none;
+		box-shadow: none;
+		color: $accent-dark-color;
+		
+		&:hover {
+	      color: $accent-dark-color;
+	    }
+		
+		&::before {
+		  background-color: $accent-dark-color;
+		}
+	  }
+	}
+  }
+}
+
+/* -----------------------------------------------------------------
+    - Footer
+----------------------------------------------------------------- */ 
+
+.footer {
+  color: $gray-dark-color;
+}
+
+/* -----------------------------------------------------------------
+    - Single post
+----------------------------------------------------------------- */ 
+
+.footer-post {
+  &::before {
+	background-color: $body-dark-color;
+  }
+  
+  &__share {
+    color: $heading-dark-color;
+  }
+}
+
+// Comments
+.comment-box {
+  &__inner {
+    background-color: $overlay-dark-color;
+  }
+  
+  &__details {
+    color: $heading-dark-color;
+  }
+  
+  &__footer {
+    color: $heading-dark-color;
+	
+	li {
+	  &:hover {
+	    color: $accent-dark-color;
+	  }  
+	}	
+  }
+}
+
+// Comment form
+.comment-form {
+  .icon-smile {
+	&:hover {
+	  color: $accent-dark-color;
+	}
+  }  
+}
+
+// Emoji
+.emoji-wrap {
+  .emoji {
+    &:hover {
+	  box-shadow: 0 0 0 rem(2px) rgba($body-dark-color,.5);
+	}	
+  }
+}
+
+// Scroll Indicator
+.scroll-line{
+  background: $accent-dark-color;
+}
+
+// niceScroll
+.nicescroll-cursors {
+  background-color: $gray-dark-color!important;
+}
+
+// Social auth
+.social-auth {
+  &__link {
+    color: $heading-dark-color;
+	
+	&:hover {
+	  color: $heading-dark-color;
+	}
+  }
+}
+
+/* -----------------------------------------------------------------
+    - Testimonials
+----------------------------------------------------------------- */
+
+.review-item {
+  background-color: $bg-dark-color;
+  background-image: url(../icons/icon-quote-dark.svg);
+}
+
+// Carousel pagination
+.swiper-pagination-bullet {
+  background: $border-dark-color;
+  
+  &-active {
+    background: $accent-dark-color;
+  }
+}
+
+/* -----------------------------------------------------------------
+    - Portfolio
+----------------------------------------------------------------- */
+
+// Filter
+@media only screen and (min-width: 769px) {
+  .filter {
+    &__item {
+	  &::before {
+		background-color: $body-dark-color;
+	  }
+	  
+	  a {
+	    color: rgba($body-dark-color,.8);
+	  }
+	  
+	  &.active a {
+	    color: $heading-dark-color;
+	  }
+    }
+  }
+}
+
+@media only screen and (max-width: $medium) {
+  .select {
+    background-color: $overlay-dark-color;
+
+    ul {
+	  background-color: $overlay-dark-color;
+	  box-shadow: 0 rem(10px) rem(60px) rgba(0,0,0,.5);
+	   
+      li {
+        color: $body-dark-color;
+
+        &:hover {
+          background-color: $accent-dark-color;
+        }
+		
+		&:hover a {
+		  color: $heading-dark-color;
+		}
+	  
+	    a {
+		  color: $body-dark-color;
+	    }
+      }
+    }
+  }
+}
+
+/* -----------------------------------------------------------------
+    - News
+----------------------------------------------------------------- */ 
+
+.news-item {
+  background-color: $overlay-dark-color;
+  
+  &__date {
+	color: $heading-dark-color;
+  }
+}
+
+/* -----------------------------------------------------------------
+    - Timeline
+----------------------------------------------------------------- */
+
+.timeline {
+  &__item {
+    border-color: $border-dark-color;
+	
+	&::before {
+	  background-color: $accent-dark-color;
+	  box-shadow: 0 0 0 rem(3px) rgba($accent-dark-color,.25);
+	}
+  }
+  
+  &__period {
+    color: rgba($body-dark-color,.7);
+  }
+}
+
+/* Progress  */
+.progress {
+  background-color: $overlay-dark-color;
+  
+  &-bar {
+    background-image: $gradient-dark-accent;
+  }
+}
+
+
+/* -----------------------------------------------------------------
+    - Other
+----------------------------------------------------------------- */ 
+
+// Bact to top
+.back-to-top {
+  border-top: 1px solid $heading-dark-color;
+  border-left: 1px solid $heading-dark-color;
+}
+
+// Medium Zoom
+.medium-zoom-overlay {
+  background: $bg-dark-color!important;
+}
+
+

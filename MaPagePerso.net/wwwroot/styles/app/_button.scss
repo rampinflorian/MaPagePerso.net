@@ -1,0 +1,43 @@
+
+// Button
+.btn {
+  background-image: $gradient-accent;
+  box-shadow: inset rem(-4px) rem(-4px) rem(5px) rgba(0, 0, 0, 0.1), 
+              inset rem(4px) rem(4px) rem(5px) rgba(255, 255, 255, 0.23);
+  border-radius: $border-rounded;
+  border: 0;
+  color: $white-color;
+  cursor: pointer;
+  font-size: rem(16px);
+  font-weight: $weight-400;
+  line-height: 1;
+  height: rem(56px);
+  padding: 0 rem(24px);
+  position: relative;
+  transition: .4s ease-in-out;
+  white-space: nowrap;
+  
+  &:hover {
+    color: $white-color;
+	box-shadow: none;
+	opacity: .9;
+  }
+  
+  .font-icon {
+    margin-right: rem(6px);
+  }
+  
+  &.disabled {
+    pointer-events: none;
+	
+    &:hover {
+	  opacity: .9;
+	}
+  }
+  
+  &.disabled:hover {
+    opacity: .9;
+  }
+}
+
+button:focus {outline: none;}

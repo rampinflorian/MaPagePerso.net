@@ -1,0 +1,100 @@
+/* -----------------------------------------------------------------
+    - Timeline
+----------------------------------------------------------------- */
+
+.timeline {
+  margin-top: rem(28px);
+  padding-left: rem(8px);
+  
+  @media only screen and (max-width: $small) {
+    margin-top: rem(24px);
+  }
+  
+  &__item {
+    //border-left: 1px solid $border-color;
+	border-left-width: 1px;
+    border-left-style: solid;
+    border-color: $border-color;
+    padding-bottom: rem(9px);
+    padding-left: rem(22px);
+    position: relative;
+	
+	&::before {
+	  content: '';
+	  background-color: $accent-color;
+	  box-shadow: 0 0 0 rem(3px) rgba($accent-color,.25);
+	  border-radius: 50%;
+	  @include position(absolute, $top: 0, $left: rem(-5px));
+	  height: rem(10px);
+	  width: rem(10px);
+	}
+	
+	&:last-child {
+	  border: 0;
+	}
+  }
+  
+  &__title {
+    margin-bottom: 0;
+	position: relative;
+	top: rem(-5px);
+  }
+  
+  &__period {
+    color: rgba($body-color,.8);
+    font-size: rem(14px);
+  }
+  
+  &__description {
+	margin-top: rem(8px);
+	
+	@media only screen and (max-width: $small) {
+	  margin-top: rem(3px);
+	}
+  }
+}
+
+/* Progress  */
+.progress {
+  background-color: $overlay-light-color;
+  border-radius: rem(16px);
+  height: rem(24px);
+  margin-bottom: rem(24px);
+  overflow: inherit;
+  position: relative;
+  text-align: right;
+  
+  @media only screen and (max-width: $small) {
+    margin-bottom: rem(12px);
+	height: rem(22px);
+  }
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  &-bar {
+    background-image: $gradient-accent;
+	border-radius: rem(16px);
+	overflow: hidden;
+	position: relative;
+	width: 0%;
+	z-index: 1;
+  }
+  
+  .progress-text {
+    @include flex($align: center, $justify: space-between);
+	height: 100%;
+	padding-left: rem(13px);
+	padding-right: rem(13px);
+	@include position(absolute, $top: 0, $left: 0);
+	width: 100%;
+	z-index: 1;
+  }
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { 
+  .progress-text span:nth-child(2) {
+    float: right;
+  }
+}

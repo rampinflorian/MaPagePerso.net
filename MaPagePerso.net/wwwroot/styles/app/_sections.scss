@@ -1,0 +1,170 @@
+/* -----------------------------------------------------------------
+    - Sections
+----------------------------------------------------------------- */
+
+// Box
+.box {
+  background-color: $white-color;
+  border-radius: $border-rounded;
+  box-shadow: $box-shadow;
+  padding: rem(30px);
+  position: relative;
+  transition: box-shadow .3s ease-in-out;
+  
+  @media only screen and (max-width: $small) {
+    padding: rem(16px);
+  }
+  
+  &__border {
+    border: 2px solid $border-color;
+    border-radius:$border-rounded;
+	
+	@media only screen and (max-width: $small) {
+      border-radius: #{$border-rounded / 1.5};
+	  padding: rem(16px);
+	}
+  }
+}
+
+.box-content {
+  @media only screen and (max-width: $large) {
+    border-radius: 0 0 $border-rounded $border-rounded;
+  }
+  
+  @media only screen and (max-width: $small) {
+    border-radius: #{$border-rounded / 1.5};
+  }
+}
+
+.js-image {
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+}
+
+// Overlay
+.overlay {
+  position: relative;
+  
+  &::before {
+    content: '';
+    background-color: rgba($overlay-dark-color, .8);
+	@include position(absolute, $top: 0, $left: 0);
+	height: 100%;
+	width: 100%;
+	z-index: 2;
+  }
+  &--45 {
+    &::before {
+	  background-color: rgba($overlay-dark-color, .45);
+	  @extend .overlay::before;
+	}
+  }
+  &--80 {
+    &::before {
+	  background-color: rgba($overlay-dark-color, .8);
+	  @extend .overlay::before;
+	}
+  }
+}
+
+.gutter-top {
+  padding-top: rem(230px);
+  
+  @media only screen and (max-width: $small) {
+    padding-top: rem(80px);
+  }
+  
+  &-100 {
+    padding-top: rem(100px);
+  
+    @media only screen and (max-width: $small) {
+      padding-top: rem(130px);
+    }
+  }	
+}
+
+// Avatars
+.avatar {
+  display: block;
+  height: 100%;
+  width: 100%;
+  
+  &--180 {
+    $size: rem(180px);
+    max-height: $size;
+    max-width: $size;
+    height: $size;
+    width: $size;
+	
+	@media only screen and (max-width: $large) {
+	  $size: rem(200px);
+	  max-height: $size;
+      max-width: $size;
+      height: $size;
+      width: $size;
+	}
+  }  
+  
+  &--80 {
+    $size: rem(80px);
+    max-height: $size;
+    max-width: $size;
+			
+	@media only screen and (max-width: $small) {
+      max-height: #{$size / 1.1};
+      max-width: #{$size / 1.1};
+    }	
+  }   
+  
+  &--60 {
+    $size: rem(60px);
+    max-height: $size;
+    max-width: $size;
+			
+	@media only screen and (max-width: $small) {
+      max-height: #{$size / 1.33};
+      max-width: #{$size / 1.33};
+    }
+  }   
+  
+  &__box {
+    -webkit-clip-path: url(#avatar-box);
+            clip-path: url(#avatar-box);
+  }
+
+  &__hexagon {
+    -webkit-clip-path: url(#avatar-hexagon);
+            clip-path: url(#avatar-hexagon);
+  }
+  
+  image {
+    height: 100%;
+    width: 100%;
+  }  
+}
+
+// Social
+.social {
+  line-height: 0;
+  margin-top: rem(24px);
+  margin-bottom: rem(22px);
+  
+  &__link {
+    color: $heading-color;
+	display: inline-block;
+	font-size: rem(14px);
+	margin-left: rem(13px);
+	text-decoration: none;
+	
+	&:hover {
+	  cursor: pointer;
+	  text-decoration: none;
+	}
+	
+	&:first-child {
+	  margin-left: 0;
+	}
+  }
+}

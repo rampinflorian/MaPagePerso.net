@@ -1,0 +1,57 @@
+/* -----------------------------------------------------------------
+    - Contact
+----------------------------------------------------------------- */ 
+
+.contact-form {
+  .btn {
+    @media only screen and (max-width: $medium) {
+	  width: 100%;
+	}
+  }
+  
+  .tabcontent & {
+    //padding-bottom: rem(30px);
+	
+	@media only screen and (max-width: $small) {
+	  //padding-bottom: rem(20px);
+	}
+  }
+}
+
+// Map
+.map {
+  background-color: $overlay-light-color;
+  border-radius: #{$border-rounded / 1.5};
+  height: rem(380px);
+  margin-bottom: rem(32px);
+  position: relative;
+  direction: ltr;
+  
+  @media only screen and (max-width: $small) {
+    height: rem(250px);
+	margin-bottom: rem(20px);
+  }
+}
+
+.popover-map {
+  &-title {
+    color: $heading-color;
+    font-size: rem(18px);
+	margin-top: rem(3px);
+	margin-bottom: rem(8px);
+  }
+  
+  &-caption {
+    color: $body-color;
+    font-weight: $weight-400;
+  }
+}
+
+// Mapbox
+#marker {
+  background-image: url('../images/icon-map-pic.svg');
+  background-size: cover;
+  width: rem(50px);
+  height: rem(50px);
+  cursor: pointer;
+}

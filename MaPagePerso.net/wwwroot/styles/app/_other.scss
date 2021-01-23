@@ -1,0 +1,77 @@
+/* -----------------------------------------------------------------
+    - Other
+----------------------------------------------------------------- */ 
+
+// Bact to top
+.back-to-top {
+  $size: rem(18px);
+  border-top: 1px solid $heading-color;
+  border-left: 1px solid $heading-color;
+  cursor: pointer;
+  opacity: .5;
+  @include position(fixed, $bottom: rem(30px), $right: rem(40px));
+  height: $size;
+  width: $size;
+  transform: rotate(45deg);
+  transition: opacity .35s ease-out;
+  z-index: 10;
+  
+  &:hover {
+    opacity: 1;
+  }
+  
+  @media only screen and (max-width: $small) {
+    display: none!important;
+  }
+}
+
+.js-lines {
+  overflow: hidden;
+  
+  div {
+    overflow: hidden;
+  }
+}
+
+.js-words div div {
+  opacity: 0;
+}
+
+// Medium Zoom
+.medium-zoom-overlay {
+  background: $white-color!important;
+  z-index: 1104;
+}
+.medium-zoom-image {
+  cursor: pointer!important;
+  z-index: 9;
+  
+  &--opened {
+    border-radius: 1px;
+	height: 100%;
+	z-index: 1104;
+  }
+}
+
+/* Jarallax */
+.js-parallax {
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  height: 100%;
+}
+
+.js-parallax-img {
+  position: relative;
+  z-index: 0;
+  
+  .jarallax-img {
+    object-fit: cover;
+    font-family: 'object-fit: cover;';
+	@include position(absolute, $top: 0, $left: 0);
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+}

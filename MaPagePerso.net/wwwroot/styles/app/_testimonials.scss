@@ -1,0 +1,99 @@
+/* -----------------------------------------------------------------
+    - Testimonials
+----------------------------------------------------------------- */
+
+.swiper-container {
+  .swiper-wrapper {
+    min-height: 100%;
+  }
+}
+
+.review-item {
+  @include flex();
+  background-color: $overlay-light-color;
+  background-image: url(../icons/icon-quote.svg);
+  background-repeat: no-repeat;
+  background-position: right rem(30px) top rem(30px);
+  border-radius: $border-rounded;
+  height: auto;
+  padding: rem(30px);
+  
+  @media only screen and (max-width: $small) {
+    background-image: none;
+    border-radius: #{$border-rounded / 1.5};
+	flex-direction: column;
+    align-items: center;
+	padding: rem(16px);
+	text-align: center;
+  }
+  
+  &__textbox {
+    margin-top: rem(10px);
+	margin-left: rem(16px);
+	
+	@media only screen and (max-width: $small) {
+	  margin-left: 0;
+	}
+  }
+  
+  &__caption {
+	line-height: 1.5;
+  }
+  
+  &__caption:last-child {
+    margin-bottom: 0;
+  }
+  
+  .title {
+	font-size: rem(18px);
+	margin-bottom: rem(8px);
+	
+	@media only screen and (max-width: $small) {
+	  font-size: rem(16px);
+	  margin-top: rem(4px);
+	  margin-bottom: rem(8px);
+	}
+  }
+}
+
+// Carousel pagination
+.swiper-pagination  {
+  margin-top: rem(24px);
+  position: relative;
+  line-height: 0;
+  
+  @media only screen and (max-width: $small) {
+    margin-top: rem(16px);
+  }
+}
+
+.swiper-pagination-bullet {
+  background: $border-color;
+  border-radius: rem(16px);
+  opacity: 1;
+  height: rem(10px);
+  width: rem(10px);
+  transition: width .3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  
+  @media only screen and (max-width: $small) {
+    height: rem(6px);
+    width: rem(6px);
+  }
+  
+  &-active {
+    background: $accent-color;
+	width: rem(20px);
+	
+	@media only screen and (max-width: $small) {
+	  width: rem(12px);
+	}
+  }
+}
+
+.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+  margin: 0 rem(5px);
+}
+.swiper-container-horizontal>.swiper-pagination-bullets,
+.swiper-pagination-custom, .swiper-pagination-fraction {
+  bottom: 0;
+}

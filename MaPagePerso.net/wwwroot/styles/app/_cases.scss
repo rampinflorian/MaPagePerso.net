@@ -1,0 +1,58 @@
+/* -----------------------------------------------------------------
+    - Cases
+----------------------------------------------------------------- */
+
+.case-item {
+  border: 2px solid $border-color;
+  border-radius: calc(#{$border-rounded} + 10px);
+  @include flex($align: center, $direction: column);
+  height: calc(100% - 24px);
+  margin-bottom: rem(24px);
+  padding: rem(30px) rem(30px) rem(24px);
+  position: relative;
+  text-align: center;
+  
+  @media only screen and (max-width: $large) {
+    height: calc(100% - 20px);
+  }
+  
+  @media only screen and (max-width: $small) {
+    border-radius: #{$border-rounded / 1.5};
+    height: calc(100% - 15px);
+	margin-bottom: rem(15px);
+	padding: rem(16px);
+	text-align: center;
+  }  
+  
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { 
+    display: block;
+  }
+
+  &__icon {
+    $size: rem(40px);
+	height: $size;
+	width: $size;
+	margin-bottom: rem(16px);
+	
+	@media only screen and (max-width: $small) {
+      margin-bottom: rem(13px);
+	}
+  }
+  
+  div {
+    flex: 1;
+  }
+  
+  &__caption {
+	line-height: 1.5;
+	
+	@media only screen and (max-width: $small) {
+	  font-size: rem(13px);
+	  line-height: 1.4;
+	}
+  }
+  
+  &__caption:last-child {
+    margin-bottom: 0;
+  }
+}

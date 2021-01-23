@@ -1,0 +1,175 @@
+/* -----------------------------------------------------------------
+    - Header
+----------------------------------------------------------------- */
+
+.header-image {
+  height: rem(316px);
+  @include position(absolute, $top: 0, $left: 0);
+  width: 100%;
+}
+
+.header {
+  @include flex();
+  margin-bottom: rem(30px);
+  
+  @media only screen and (max-width: $large) {
+    flex-direction: column;
+  }
+  
+  @media only screen and (max-width: $small) {
+    margin-bottom: rem(15px);
+  }
+  
+  &__left {
+    @include flex($align: start);
+	flex: 0 0 50%;
+	padding-right: rem(30px);
+    position: relative;
+	
+	&::before {
+	  content: '';
+	  background-color: $border-color;
+	  @include position(absolute, $top: 0, $right: 0, $bottom: 0);
+	  height: 100%;
+	  width: 1px;
+	}
+	
+	@media only screen and (max-width: $large) {
+	  align-items: center;
+	  flex-direction: column;
+	  padding-right: 0;
+	  padding-bottom: rem(20px);
+	  text-align: center;
+	  
+	  &::before {
+	    @include position(absolute, $top: auto, $right: 0, $bottom: 0);
+	    height: 1px;
+	    width: 100%;
+	  }
+	}
+  }
+  
+  &__right {
+    @include flex($align: start);
+	flex: 0 0 50%;
+	padding-left: rem(30px);
+	
+	@media only screen and (max-width: $large) {
+	  padding-left: 0;
+	  padding-top: rem(30px);
+	  
+	  ul:first-child {
+	    padding: 0;
+	  }
+	}
+	
+	@media only screen and (max-width: $small) {
+	  flex-direction: column;
+	  padding-top: rem(24px);
+	}
+  }
+  
+  &__photo {
+    $size: rem(162px);
+	background-color: $white-color;
+	border: rem(6px) solid $white-color;
+	border-radius: rem(47px);
+	box-shadow: 0 rem(8px) rem(24px) rgba(0, 0, 0, 0.05);
+	margin-top: rem(-66px);
+	height: $size;
+	overflow: hidden;
+	width: $size;
+	
+	@media only screen and (max-width: $large) {
+	  margin-top: rem(-80px);
+	  margin-bottom: rem(20px);
+	}
+  }
+  
+  &__photo-img {
+    height: 100%;
+    width: 100%;
+  }
+  
+  &__base-info {
+    margin-left: rem(24px);
+	
+	@media only screen and (max-width: $large) {
+	  margin-left: 0;
+	}
+	
+    .title {
+      margin-bottom: rem(2px);
+	}
+  }
+  
+  &__social {
+    @include flex($align: center);
+	font-size: rem(16px);
+    list-style: none;
+	margin-top: rem(8px);
+	margin-bottom: 0;
+    padding: 0;
+	
+    li {
+      margin-right: rem(16px);
+    }
+  
+    li:last-child {
+      margin-right: 0;
+    }
+  
+    a {
+      color: $body-color;
+	  text-decoration: none;
+    }
+	
+	a:hover {
+      color: $accent-color;
+    }
+	
+	@media only screen and (max-width: $large) {
+	  justify-content: center;
+	}
+  }
+  
+  &__contact {
+    list-style: none;
+	margin-bottom: 0;
+	width: 50%;
+	
+	@media only screen and (max-width: $large) {
+	  &:first-child {
+	    padding: 0;
+		margin-bottom: rem(16px);
+	  }
+	}
+	
+	@media only screen and (max-width: $small) {
+	  padding: 0;
+	  width: 100%;
+	  
+	  &:first-child {
+		margin-bottom: rem(12px);
+	  }
+	}
+	
+	li {
+	  margin-bottom: rem(16px);
+	  word-break: break-all;
+	  
+	  @media only screen and (max-width: $small) {
+	    margin-bottom: rem(12px);
+	  }
+	}
+	
+	li:last-child {
+	  margin-bottom: 0;
+	}
+  }
+}
+
+.status {
+  font-size: rem(14px);
+  @include inline-flex($align: center);
+}

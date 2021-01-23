@@ -1,0 +1,249 @@
+/* -----------------------------------------------------------------
+    - Portfolio
+----------------------------------------------------------------- */
+
+.gutter-sizer {
+  width: rem(30px);
+}
+  
+.gallery-grid {
+  @include flex();
+  
+  &-2 {
+    @include flex($wrap: wrap);
+	margin-left: -10px;
+	margin-right: -11px;
+  }
+  
+  &-2 .gallery-grid__item {
+    margin-left: 10px;
+	margin-right: 10px;
+	
+	@media only screen and (max-width: $large) {
+	  width: calc(50% - 20px);
+	}
+	
+	@media only screen and (max-width: $medium) {
+	  width: 100%;
+	}
+  }
+  
+  &__item {
+	margin-bottom: rem(20px);
+    width: calc(33% - 18px);
+	
+	@media only screen and (max-width: $large) {
+	  width: calc(50% - 16px);
+	}
+	
+	@media only screen and (max-width: $medium) {
+	  width: 100%;
+	  
+	  &:last-child {
+	    margin-bottom: 0;
+	  }
+	}	
+	
+	&:hover .gallery-grid__image {
+	  transform: scale3d(1.1,1.1,1);
+	}
+  }
+  
+  &-two .gallery-grid__item {
+    width: calc(50% - 16px);
+	
+	@media only screen and (max-width: $medium) {
+	  width: 100%;
+	}
+  }
+  
+  &__image-wrap {
+    border-radius: $border-rounded * .7;
+	display: block;
+    height: rem(180px);
+	overflow: hidden;
+    position: relative;
+	width: 100%;
+	z-index: 1;
+	
+	@media only screen and (max-width: $large) {
+	  height: rem(200px);
+	}
+	
+	@media only screen and (max-width: $medium) {
+	  height: rem(290px);
+	}
+  }
+  
+  &-two .gallery-grid__image-wrap {
+    height: auto;
+  }
+  
+  &__image {
+    border-radius: #{$border-rounded / 2};
+	transform: scale3d(1,1,1);
+  }
+  
+  &__title {
+	margin-top: rem(16px);
+	margin-bottom: 0;
+	
+	@media only screen and (max-width: $small) {
+	  font-size: rem(14px);
+	}
+  }
+  
+  &__category {
+    font-size: rem(14px);
+	display: block;
+  }
+}
+
+// Filter
+@media only screen and (min-width: 769px) {
+  .filter {
+    @include inline-flex($wrap: wrap);
+	font-size: rem(16px);
+    list-style: none;
+    margin-bottom: rem(19px);
+    padding: 0;
+  
+    &__item {
+      padding-right: rem(16px);
+	  position: relative;
+	  
+	  &::before {
+	    content: '';
+		background-color: $body-color;
+		border-radius: rem(3px);
+		@include position(absolute, $top: 0, $right: rem(6px), $bottom: 0);
+		height: rem(4px);
+		margin: auto;
+		width: rem(4px);
+	  }
+	  
+	  &:first-child {
+	    display: none;
+	  }	
+	
+	  &:last-child {
+	    padding-right: 0;
+	  }
+	  
+	  &:last-child::before {
+	    display: none;
+	  }
+	  
+	  a {
+	    color: rgba($body-color,.8);
+	  }
+	  
+	  &.active a {
+	    color: $heading-color;
+	  }
+    }
+  
+    &__link {
+      padding: 0 rem(4px);
+      text-decoration: none;
+	  display: block;
+	  overflow: hidden;
+	  position: relative;
+	  
+	  &:hover {
+	    text-decoration: none;
+	  }
+    }
+  }
+}
+
+.select .placeholder {
+  display: none;
+}
+
+@media only screen and (max-width: $medium) {
+  .select {
+    background-color: $overlay-light-color;
+	border-radius: rem(20px);
+    display: block;
+    margin-bottom: rem(32px);
+    padding: rem(4px) rem(19px) rem(3px) rem(20px);
+	position: relative;
+    vertical-align: middle;
+    text-align: left;
+    user-select: none;
+	width: 100%;
+    -webkit-touch-callout: none;
+    z-index: 2;
+  
+    .placeholder {
+	  cursor: pointer;
+	  display: block;
+	  padding: rem(8px) 0;
+      position: relative;
+      z-index: 1;
+
+      &:after {
+	    @include position(absolute, $top: 50%, $right: rem(2px));
+        transform: translateY(-50%);
+        font-family: 'icomoon';
+        content: '\e940';
+        z-index: 10;
+      }
+    }
+
+    &.is-open {
+      .placeholder:after{
+        content: '\e943';
+      }
+      ul {
+        display: block;
+      }
+    }
+
+    ul {
+	  background-color: $white-color;
+	  box-shadow: 0 rem(10px) rem(60px) rgba($gray-color,.25);
+	  border-radius: $border-rounded; 
+      display: none;
+	  max-height: rem(600px);
+	  overflow: hidden;
+      overflow-y: auto;
+      padding: rem(10px) 0;
+	  @include position(absolute, $top: 100%, $left: 0);
+      width: 100%;
+	  z-index: 100;
+	   
+      li {
+        display: block;
+        text-align: left;
+        padding: rem(5px) rem(20px) rem(3px);
+        color: $body-color;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $accent-color;
+        }
+		
+		&:hover a {
+		  color: $white-color;
+		}
+		
+	    &:first-child {
+	      display: none;
+	    }
+	  
+	    a {
+		  color: $body-color;
+	      text-decoration: none;
+	    }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $small) {
+  .select {
+    margin-bottom: rem(16px);
+  }
+}

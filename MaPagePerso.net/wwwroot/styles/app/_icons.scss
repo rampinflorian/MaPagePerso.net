@@ -1,0 +1,66 @@
+// Icons
+$size: 16px;
+
+.icon {
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  line-height: 0;
+  flex-shrink: 0;
+  
+  &__size-16 {
+    height: $size;
+    width: $size;
+  }
+  
+  &__size-18 {
+    height: #{$size * 1.125};
+    width: #{$size * 1.125};
+  }
+  
+  &__size-24 {
+    height:#{$size * 1.5};
+    width: #{$size * 1.5};
+  }
+  
+  &__size-32 {
+    height: #{$size * 2};
+    width: #{$size * 2};
+  }
+  
+  &__size-48 {
+    height: #{$size * 3};
+    width: #{$size * 3};
+  }
+  
+  &__size-56 {
+    height: #{$size * 3.5};
+    width: #{$size * 3.5};
+  } 
+  
+  &__size-64 {
+    height: #{$size * 4};
+    width: #{$size * 4};
+  }
+  
+  // set
+  &__calendar {
+    background-image: url(../icons/icon-calendar.svg);
+  }
+  
+  &__location {
+    background-image: url(../icons/icon-location.svg);
+  }  
+  
+  &__envelope {
+    background-image: url(../icons/icon-envelope.svg);
+  }
+
+  &__phone {
+    background-image: url(../icons/icon-phone.svg);
+  }
+
+  &__skype {
+    background-image: url(../icons/icon-skype.svg);
+  }  
+}

@@ -1,0 +1,479 @@
+$version: "1.0.0";
+
+/* ------------------------------------------------
+ Author: ArtStyles (Art)
+ 
+ Template Name: 
+ version: #{$version}
+------------------------------------------------ */
+
+@import 'variables/vars';
+@import 'variables/mixins';
+@import 'variables/media';
+
+/* -----------------------------------------------------------------
+    - General Styles
+----------------------------------------------------------------- */
+
+body {
+  direction: rtl;
+  text-align: right;
+}
+
+// Background
+.bg {
+  &-triangles {
+	background-position: right top, left bottom;
+  }  
+}
+
+/* -----------------------------------------------------------------
+    - Typography
+----------------------------------------------------------------- */
+
+.title { 
+  &-icon {
+    margin-left: rem(8px);
+	margin-right: 0;
+  }
+  
+  &__separate {
+    &::before,
+    &::after {
+	  left: auto;
+      right: 0;
+    }
+  }
+}
+
+.block-quote {
+  @media only screen and (max-width: $large) {
+    padding-left: 0;
+	padding-right: rem(60px);
+  }  
+  
+  @media only screen and (max-width: $small) {
+	padding-right: 0;
+  }
+  
+  &::before {
+    left: auto;
+	right: rem(-54px);
+	
+	@media only screen and (max-width: $large) {
+      left: auto;
+	  right: 0
+	}
+	
+	@media only screen and (max-width: $small) {
+	  left: 0;
+	  right: auto;
+	}
+  }
+  
+  &__author {
+	padding-left: 0;
+	padding-right: rem(48px);
+	
+	@media only screen and (max-width: $small) {
+	  padding-left: 0;
+	  padding-right: rem(32px);
+	}
+	
+	&::before {
+	  left: auto;
+      right: 0;
+	}
+  }
+}
+
+/* -----------------------------------------------------------------
+    - Form
+----------------------------------------------------------------- */
+
+// Input Text
+.form-control {
+  text-align: right;
+
+  &__icon {
+    padding-left: 0;
+	padding-left: rem(54px);
+	
+	@media only screen and (max-width: $small) {
+	  padding-left: 0;
+	  padding-left: rem(45px);
+	}
+  }  
+}
+
+.form-group {
+  .font-icon { 
+	left: auto;
+    right: rem(38px);
+	
+	@media only screen and (max-width: $small) {
+	  left: auto;
+	  right: rem(34px);
+	}
+  }
+}
+
+.help-block {
+  padding-left: 0;
+  padding-right: rem(6px);
+}
+
+// Checkbox
+.custom-control-label {
+  padding-left: 0;
+  padding-right: rem(8px);	
+}
+
+// Button
+.btn {
+  .font-icon {
+    margin-left: rem(6px);
+    margin-right: 0;
+  }
+}
+
+// Dropdown
+.dropdown {
+  &-menu {
+	&::before {
+	  left: auto;
+      right: rem(18px);
+	}
+  }
+}
+
+/* -----------------------------------------------------------------
+    - Preloader
+----------------------------------------------------------------- */
+
+.preloader {
+  &__progress {
+	left: auto;
+	right: 0
+	
+	span {
+	  left: auto;
+      right: 0;
+	}
+  }
+}
+
+/* -----------------------------------------------------------------
+    - Header
+----------------------------------------------------------------- */
+
+.header {
+  &__left {
+    padding-left: rem(30px);
+	padding-right: 0;
+	
+	&::before {
+	  left: 0;
+	  right: auto;
+	}
+	
+	@media only screen and (max-width: $large) {
+	  padding-left: 0;
+	  
+	  &::before {
+	    left: 0;
+	    right: auto;
+	  }
+	}
+  }
+  
+  &__right {
+	padding-left: 0;
+	padding-right: rem(30px);
+	
+	@media only screen and (max-width: $large) {
+	  padding-right: 0;
+	}
+  }
+  
+  &__base-info {
+    margin-left: 0;
+	margin-right: rem(24px);
+	
+	@media only screen and (max-width: $large) {
+	  margin-right: 0;
+	}
+  }
+  
+  &__social {
+    li {
+	  margin-left: rem(16px);
+      margin-right: 0;
+    }
+  
+    li:last-child {
+      margin-left: 0;
+    }
+  }
+}
+
+/* -----------------------------------------------------------------
+    - Sections
+----------------------------------------------------------------- */
+
+// Social
+.social {
+  &__link {
+	margin-left: 0;
+	margin-right: rem(13px);
+	
+	&:first-child {
+	  margin-right: 0;
+	}
+  }
+}
+
+/* -----------------------------------------------------------------
+    - Portfolio
+----------------------------------------------------------------- */
+
+// Filter
+@media only screen and (min-width: 769px) {
+  .filter {
+    &__item {
+      padding-left: rem(16px);
+	  padding-right: 0;
+	  
+	  &::before {
+		left: 6px;
+        right: auto;
+	  }
+	
+	  &:last-child {
+	    padding-left: 0;
+	  }
+    }
+  }
+}
+
+@media only screen and (max-width: $medium) {
+  .select {
+    text-align: right;
+  
+    .placeholder {
+      &:after {
+	    left: 2px;
+		right: auto;
+      }
+    }
+
+    ul {
+	  left: auto;
+	  right: 0;
+	   
+      li {
+        text-align: right;
+      }
+    }
+  }
+}
+
+/* -----------------------------------------------------------------
+    - News
+----------------------------------------------------------------- */ 
+
+.news-item {
+  &__date {
+	border-radius: 0 $border-rounded 0 $border-rounded;
+  }
+}
+
+/* -----------------------------------------------------------------
+    - Single post
+----------------------------------------------------------------- */ 
+
+.footer-post {
+  &__share {
+	.font-icon {
+	  margin-left: rem(11px);
+	  margin-right: 0;
+	}
+  }
+}
+
+// Comments
+.comment-box {
+  .comment-box {
+    margin-left: 0;
+	margin-right: rem(48px);
+	
+	@media only screen and (max-width: $small) {
+      margin-left: 0;
+	  margin-right: rem(20px);
+    }
+  }
+  
+  &__inner {
+	padding-left: rem(20px);
+	padding-right: rem(22px);
+	
+	@media only screen and (max-width: $small) {
+	  padding-left: rem(16px);
+	  padding-right: rem(18px);
+	}
+  }
+  
+  .avatar {
+    margin-left: rem(16px);
+	margin-right: 0;
+  }
+  
+  &__footer {
+	li {
+	  margin-left: rem(32px);
+	  margin-right: 0;
+	  
+	  @media only screen and (max-width: $small) {
+	    margin-left: rem(16px);
+	    margin-right: 0;
+	  }
+	  
+	  &:last-child {
+		margin-left: 0;
+      }	  
+	}
+	
+	span {
+	  padding-left: 0;
+	  padding-right: rem(6px);
+	}	
+  }
+}
+
+// Comment form
+.comment-form {
+  .textarea {
+	padding-left: rem(72px);
+	padding-right: rem(46px);
+	
+	@media only screen and (max-width: $small) {
+	  padding-left: rem(52px);
+	  padding-right: rem(40px);
+	}
+  }
+  
+  .btn {
+    margin-left: rem(8px);
+    margin-right: 0;
+	left: 0;
+	right: auto;
+  }
+  
+  .dropdown {
+	margin-left: 0;
+	margin-right: rem(16px);
+	
+	&-menu {
+	  margin-left: 0;
+	  margin-right: rem(-16px);
+	}
+  }
+}
+
+// Social auth
+.social-auth {
+  &__item {
+    margin-left: rem(6px);
+	margin-right: 0;
+  }
+}
+
+/* -----------------------------------------------------------------
+    - Testimonials
+----------------------------------------------------------------- */
+
+.review-item {
+  background-position: left rem(30px) top rem(30px);
+  
+  &__textbox {
+	margin-left: 0;
+	margin-right: rem(16px);
+	
+	@media only screen and (max-width: $small) {
+	  margin-right: 0;
+	}
+  }
+}
+
+/* -----------------------------------------------------------------
+    - Timeline
+----------------------------------------------------------------- */
+
+.timeline {
+  padding-left: 0;
+  padding-right: .5rem;
+  
+  &__item {
+    border-left: 0;
+	border-right: 1px solid $border-color;
+    padding-left: 0;
+    padding-right: 1.4rem;
+	
+	&::before {
+	  left: auto;
+	  right: -5px;
+	}
+  }
+}
+
+/* -----------------------------------------------------------------
+    - Timeline
+----------------------------------------------------------------- */
+
+.timeline {
+  padding-left: 0;
+  padding-right: rem(8px);
+  
+  &__item {
+	border-left-width: 0;
+	border-right-width: 1px;
+    padding-left: 0;
+    padding-right: rem(22px);
+	
+	&::before {
+	  left: 0;
+	  right: rem(-5px);
+	}
+  }
+}
+
+/* Progress  */
+.progress {
+  text-align: left;
+  
+  .progress-text {
+	left: auto;
+    right: 0;
+  }
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { 
+  .progress-text span:nth-child(2) {
+    float: left;
+  }
+}
+
+/* -----------------------------------------------------------------
+    - Other
+----------------------------------------------------------------- */ 
+
+// Bact to top
+.back-to-top {
+  left: 40px;
+  right: 0;
+  
+  @media only screen and (max-width: $small) {
+    display: none!important;
+  }
+}
+

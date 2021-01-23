@@ -1,0 +1,8 @@
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+.idea/.idea.MaPagePerso.net/.idea/encodings.xml
+.idea/.idea.MaPagePerso.net/.idea/indexLayout.xml
+.idea/.idea.MaPagePerso.net/.idea/vcs.xml

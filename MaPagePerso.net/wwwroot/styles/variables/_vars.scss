@@ -1,0 +1,44 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
+
+// Font settings
+$main-font                  : 'Poppins', sans-serif;
+
+$baseSystemFontSize         : 16px;
+
+$weight-400                 : 400; //regular
+$weight-500                 : 500; //medium
+$weight-600                 : 600; //semi bold
+
+// Light sheme
+$white-color                : #fff;
+$accent-color               : #304CFD;
+$heading-color              : #3B4B5E;
+$body-color                 : #5E6E80;
+$gray-color                 : #8D99A6;
+$border-color               : #EBF0F2;
+$orange-color               : #FF965D;
+$red-color                  : #FF3D57;
+$overlay-light-color        : #F7F9FA;
+
+// Dark sheme
+$accent-dark-color          : #0D86FF;
+$surface-dark-color         : #23262B;
+$heading-dark-color         : #FCFCFC;
+$body-dark-color            : #AEB0B8;
+$gray-dark-color            : #93959C;
+$border-dark-color          : #33363D;
+$overlay-dark-color         : #2E2F36;
+$bg-dark-color              : #1D1E24;
+
+// Gradien
+$gradient-accent            : linear-gradient(142.17deg, #3086FF 6.66%, #304CFD 91.48%); // blue 
+$gradient-dark-accent       : linear-gradient(142.17deg, #0DA2FF 6.66%, #0055FF 91.48%); // blue 
+$gradient-bg                : linear-gradient(145.44deg, #F2F4FA 0%, #FAFBFC 100%);
+
+// Border radius 
+$border-rounded             : 20px;
+
+// Box shadow
+$box-shadow                 : 0px 20px 40px rgba(103, 118, 128, 0.03);
+$box-shadow-dark            : -4px 8px 24px rgba(0, 0, 0, 0.07);
