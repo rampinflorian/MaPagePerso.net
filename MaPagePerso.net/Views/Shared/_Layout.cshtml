@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8"/>
-    <title>@ViewData["Title"] - MaPagePerso.net</title>
+    <title>@ViewData["Title"] FlorianRampin.fr</title>
 
     <!-- Meta Data -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -113,15 +113,12 @@
                         <li class="nav__item">
                             <a class="@(ViewContext.RouteData.Values["Controller"]?.ToString() == "Resume" ? "active" : "")" asp-controller="Resume"><i class="icon-file-text"></i>CV</a>
                         </li>
-                        @* <li class="nav__item"> *@
-                        @*     <a class="@(ViewContext.RouteData.Values["Action"]?.ToString() == "Index" ? "active" : "")" href="works.html"><i class="icon-codesandbox"></i>Works</a> *@
-                        @* </li> *@
-                        @* <li class="nav__item"> *@
-                        @*     <a class="@(ViewContext.RouteData.Values["Action"]?.ToString() == "Index" ? "active" : "")" href="blog.html"><i class="icon-book-open"></i>Blog</a> *@
-                        @* </li> *@
-                        @* <li class="nav__item"> *@
-                        @*     <a class="@(ViewContext.RouteData.Values["Action"]?.ToString() == "Index" ? "active" : "")" href="contact.html"><i class="icon-book"></i>Contact</a> *@
-                        @* </li> *@
+                        <li class="nav__item">
+                            <a class="@(ViewContext.RouteData.Values["Controller"]?.ToString() == "Project" ? "active" : "")" asp-controller="Project"><i class="icon-codesandbox"></i>Projets</a>
+                        </li>
+                        <li class="nav__item">
+                            <a class="@(ViewContext.RouteData.Values["Controller"]?.ToString() == "Contact" ? "active" : "")" asp-controller="Contact"><i class="icon-book"></i>Contact</a>
+                        </li>
                     </ul>
                 </div>
             </aside>
@@ -165,9 +162,7 @@
                     // show alert or something
                 }
             });
-        })
-        
-        $(document).ready(function () {
+                
             $.ajax('@Url.Action("GetExperienceYears", "Layout", null, Context.Request.Scheme)', {
                 success: function (data) {
                    document.getElementById('years-experience-id').textContent = data + " ans";

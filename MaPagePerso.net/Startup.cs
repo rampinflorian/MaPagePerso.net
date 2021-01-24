@@ -28,7 +28,7 @@ namespace MaPagePerso.net
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(
+                options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -63,9 +63,15 @@ namespace MaPagePerso.net
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(name: "Contact",
+                    pattern: "contact/",
+                    defaults: new { controller = "Contact", action = "Index"});
                 endpoints.MapControllerRoute(name: "Resume",
                     pattern: "resume/",
                     defaults: new { controller = "Resume", action = "Index"});
+                endpoints.MapControllerRoute(name: "Project",
+                    pattern: "project/",
+                    defaults: new { controller = "Project", action = "Index"});
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
