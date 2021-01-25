@@ -1,4 +1,5 @@
 ﻿@model MaPagePerso.net.Form.Mailer;
+@using AspNetCore.ReCaptcha
 
 @{
     @Model
@@ -31,6 +32,9 @@
             <div class="form-group col-12 col-md-12">
                 <textarea asp-for="Content" class="textarea form-control" placeholder="Mon message"  rows="4" required="required"></textarea>
                 <div class="help-block with-errors"></div>
+            </div>
+            <div class="form-group col-12 col-md-12">
+                @Html.ReCaptcha()
             </div>
         </div>
         <div class="row">
