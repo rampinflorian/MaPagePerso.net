@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetCore.ReCaptcha;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -39,6 +40,9 @@ namespace MaPagePerso.net
             services.AddControllersWithViews();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddFlashes().AddMvc();
+            
+            // Captcha
+            services.AddReCaptcha(Configuration.GetSection("ReCaptcha"));
             
             // AutoWiring
             services.AddTransient<MailerService>();

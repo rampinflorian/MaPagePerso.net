@@ -9,14 +9,12 @@ namespace MaPagePerso.net.Services
 {
     public class MailerService
     {
-        private readonly IFlasher _flasher;
         private readonly string _authUsername;
         private readonly string _authPassword;
         private readonly MimeMessage _message;
 
-        public MailerService(IConfiguration configuration, IFlasher flasher, MimeMessage message)
+        public MailerService(IConfiguration configuration, MimeMessage message)
         {
-            _flasher = flasher;
             _message = message;
 
             _authUsername = configuration.GetSection("Mailer").GetSection("Username").Value;
@@ -53,7 +51,6 @@ Contenu du message :
             );
 
             await client.SendAsync(_message);
-            _flasher.Flash("success", "Votre message a bien été envoyé !", dismissable: true);
 
             await client.DisconnectAsync(true);
         }
