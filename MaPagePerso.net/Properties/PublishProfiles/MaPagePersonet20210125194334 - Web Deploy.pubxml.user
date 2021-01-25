@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Ce fichier est utilisé par le processus de publication/package de votre projet web. Vous pouvez personnaliser le comportement de ce processus
+en modifiant ce fichier MSBuild. Pour en savoir plus à ce sujet, visitez https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAJcw1jg/2i0eGQZQUAfsGBwAAAAACAAAAAAAQZgAAAAEAACAAAADuiw9UC2aryfuDIkdPsN42Fub19BN31CzUa8Teip9UgwAAAAAOgAAAAAIAACAAAABgsma98lvIbnzJYJ6JLrbWjKtwprTc1dKOmU+ULbIf/4AAAAAkm3Ew4OE8EgGg3Vxc9uCP1P5/Mb7scj5JdkDSWUB9t1tHudft3dk7k6e6XuG7Gb73XfLw9lcLgFGPnaZvunIT/Gr5dmI+0zBXM/MhnX/F10MtK7KoGqanhwhl4uiQ4hVRDT/N7h+QTEvEDAah1aMdoo479mFUqAJDBXZN99FZ8kAAAAD/Nk8y/SEPzNlvizaM8cqSmduN+7UQ6dHEH2uWpiSupmqZqNWRnPB5sxHWYTyhCa6TDT1zU1owHrKiiS7j0rh5</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=tcp:mapagepersonetdbserver.database.windows.net,1433%3bInitial Catalog=MaPagePerso.net_db%3bUser Id=mppAdmin%40mapagepersonetdbserver%3bPassword=B3z78xd+!</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="MaPagePerso.net.Data.ApplicationDbContext">
+      <Value>Data Source=tcp:mapagepersonetdbserver.database.windows.net,1433%3bInitial Catalog=MaPagePerso.net_db%3bUser Id=mppAdmin%40mapagepersonetdbserver%3bPassword=B3z78xd+!</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>
