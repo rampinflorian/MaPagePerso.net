@@ -13,15 +13,11 @@ namespace MaPagePerso.net.Controllers
 {
     public class ContactController : Controller
     {
-        private readonly ILogger<ContactController> _logger;
-        private readonly IConfiguration _configuration;
         private readonly IFlasher _flasher;
         private readonly MailerService _mailerService;
 
-        public ContactController(ILogger<ContactController> logger, IConfiguration configuration, IFlasher flasher, MailerService mailerService)
+        public ContactController(IFlasher flasher, MailerService mailerService)
         {
-            _logger = logger;
-            _configuration = configuration;
             _flasher = flasher;
             _mailerService = mailerService;
         }
