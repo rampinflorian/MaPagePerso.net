@@ -9,9 +9,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using MaPagePerso.net.Data;
+using MaPagePerso.net.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MimeKit;
 
 namespace MaPagePerso.net
 {
@@ -36,6 +38,11 @@ namespace MaPagePerso.net
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
+            services.AddFlashes().AddMvc();
+            
+            // AutoWiring
+            services.AddTransient<MailerService>();
+            services.AddTransient<MimeMessage>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,6 +70,9 @@ namespace MaPagePerso.net
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(name: "Contact",
+                    pattern: "contact/mailer",
+                    defaults: new { controller = "Contact", action = "Mailer"});
                 endpoints.MapControllerRoute(name: "Contact",
                     pattern: "contact/",
                     defaults: new { controller = "Contact", action = "Index"});

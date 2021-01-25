@@ -21,7 +21,6 @@ namespace MaPagePerso.net.Controllers
             _logger = logger;
             _context = context;
         }
-
         public async Task<IActionResult> Index()
         {
             var projects = await _context.Projects.ToListAsync();
