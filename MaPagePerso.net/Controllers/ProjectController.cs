@@ -23,7 +23,7 @@ namespace MaPagePerso.net.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var projects = await _context.Projects.ToListAsync();
+            var projects = await _context.Projects.OrderByDescending(d => d.CreatedAt).ToListAsync();
             return View(projects);
         }
 
