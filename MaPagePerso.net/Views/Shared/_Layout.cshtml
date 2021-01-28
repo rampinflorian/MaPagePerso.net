@@ -137,7 +137,8 @@
 
 <script >
         $(document).ready(function () {
-            $.ajax('@Url.Action("GetYearsOld", "Layout", null, Context.Request.Scheme)', {
+            
+            $.ajax(window.location.origin + '/Layout/GetYearsOld', {
                 success: function (data) {
                    document.getElementById('years-old-id').textContent = data + " ans";
                 },
@@ -145,8 +146,7 @@
                     // show alert or something
                 }
             });
-                
-            $.ajax('@Url.Action("GetExperienceYears", "Layout", null, Context.Request.Scheme)', {
+            $.ajax(window.location.origin + '/Layout/GetExperienceYears', {
                 success: function (data) {
                    document.getElementById('years-experience-id').textContent = data + " ans";
                 },
