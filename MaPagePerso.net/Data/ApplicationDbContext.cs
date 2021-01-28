@@ -13,6 +13,5 @@ namespace MaPagePerso.net.Data
             : base(options)
         {
         }
-        public DbSet<Project> Projects { get; set; }
     }
 }
