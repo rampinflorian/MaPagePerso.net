@@ -47,6 +47,11 @@ namespace MaPagePerso.net
             // AutoWiring
             services.AddTransient<MailerService>();
             services.AddTransient<MimeMessage>();
+            
+            services.AddHttpsRedirection(options =>
+            {
+                options.HttpsPort = 443;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
