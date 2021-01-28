@@ -14,17 +14,14 @@ namespace MaPagePerso.net.Controllers
     public class ProjectController : Controller
     {
         private readonly ILogger<ProjectController> _logger;
-        private readonly ApplicationDbContext _context;
 
         public ProjectController(ILogger<ProjectController> logger, ApplicationDbContext context)
         {
             _logger = logger;
-            _context = context;
         }
         public async Task<IActionResult> Index()
         {
-            var projects = await _context.Projects.OrderByDescending(d => d.CreatedAt).ToListAsync();
-            return View(projects);
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
