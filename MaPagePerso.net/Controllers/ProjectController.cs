@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Threading.Tasks;
 using MaPagePerso.net.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MaPagePerso.net.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace MaPagePerso.net.Controllers
 {

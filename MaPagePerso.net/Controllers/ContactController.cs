@@ -6,8 +6,6 @@ using MaPagePerso.net.Form;
 using MaPagePerso.net.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 
 namespace MaPagePerso.net.Controllers
 {
