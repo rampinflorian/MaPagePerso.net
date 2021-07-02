@@ -20,7 +20,8 @@ namespace MaPagePerso.net.Controllers.API
 
         public IActionResult GetYearsOld()
         {
-            return Ok(GetDiffBetweenNow(new DateTime(1990, 6, 19)));
+            var yo = GetDiffBetweenNow(new DateTime(1990, 6, 19));
+            return Ok(yo);
         }
 
         public IActionResult GetExperienceYears()
@@ -28,12 +29,13 @@ namespace MaPagePerso.net.Controllers.API
             return Ok(GetDiffBetweenNow(new DateTime(2014, 9, 25)));
         }
 
-        private static int GetDiffBetweenNow(DateTime calculateDate)
+        private static int GetDiffBetweenNow(DateTime anniversaryDate)
         {
-            var date = DateTime.Now;
-            var result = date.Year - calculateDate.Year;
-            
-            return result - 1;
+            DateTime now = DateTime.Today;
+            var age = now.Year - anniversaryDate.Year;
+            if (anniversaryDate > now.AddYears(-age)) 
+                age--;
+            return age;
         }
 
     }
