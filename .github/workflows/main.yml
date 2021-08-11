@@ -32,4 +32,4 @@ jobs:
         command: sudo service deferat start
         host: ${{ secrets.REMOTE_HOST }}
         username: ${{ secrets.REMOTE_USER }}
-        privateKey: ${{ secrets.REMOTE_SSH_KEY }}
+        password: ${{ secrets.REMOTE_PASSWORD }}
