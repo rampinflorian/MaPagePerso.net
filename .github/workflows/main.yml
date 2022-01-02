@@ -34,7 +34,7 @@ jobs:
     - name: Reload service
       uses: garygrossgarten/github-action-ssh@release
       with:
-        command: ./deploy-gentelwelcomeservice.sh ${{ secrets.REMOTE_PASSWORD }} 
+        command: ./deploy-mapageperso-service.sh ${{ secrets.REMOTE_PASSWORD }} 
         host: ${{ secrets.REMOTE_HOST }}
         username: ${{ secrets.REMOTE_USER }}
         privateKey: ${{ secrets.REMOTE_KEY }}
