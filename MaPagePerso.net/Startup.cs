@@ -49,10 +49,6 @@ namespace MaPagePerso.net
             services.AddTransient<MailerService>();
             services.AddTransient<MimeMessage>();
             
-            services.AddHttpsRedirection(options =>
-            {
-                options.HttpsPort = 443;
-            });
             services.Configure<ForwardedHeadersOptions>(options =>
             {
                 options.KnownNetworks.Clear();
@@ -72,8 +68,8 @@ namespace MaPagePerso.net
             }
             else
             {
-                app.UseForwardedHeaders()
-                    .UseHttpsRedirection();
+                app.UseForwardedHeaders(); 
+                app.UseHttpsRedirection();
                 app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
