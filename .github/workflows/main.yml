@@ -1,4 +1,4 @@
-name: CI
+name: Publish and Deploy Master
 
 on: 
   push:
@@ -15,21 +15,28 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.0.x
+        dotnet-version: 6.0.x
     - name: Dotnet Publish
       run: dotnet publish -c Release -o deploy
-    - name: Copy via ssh
-      uses: garygrossgarten/github-action-scp@release
+      
+    - name: Install SSH Key
+      uses: shimataro/ssh-key-action@v2
       with:
-        local: /home/runner/work/MaPagePerso.net/MaPagePerso.net/deploy/
-        remote: ${{ secrets.REMOTE_TARGET }}
+        key: ${{ secrets.REMOTE_KEY }}
+        known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
+      
+    - name: Adding Known Hosts
+      run: ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
+      
+    - name: Deploy with rsync
+      run: rsync -avz /home/runner/work/MaPagePerso.net/MaPagePerso.net/deploy/ ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:${{ secrets.REMOTE_TARGET }}
+      
+    - name: Reload service
+      uses: garygrossgarten/github-action-ssh@release
+      with:
+        command: ./deploy-gentelwelcomeservice.sh ${{ secrets.REMOTE_PASSWORD }} 
         host: ${{ secrets.REMOTE_HOST }}
         username: ${{ secrets.REMOTE_USER }}
-        password: ${{ secrets.REMOTE_PASSWORD }}
-    - name: Run SSH command
-      uses: garygrossgarten/github-action-scp@release
-      with:
-        command: sudo service deferat start
-        host: ${{ secrets.REMOTE_HOST }}
-        username: ${{ secrets.REMOTE_USER }}
-        password: ${{ secrets.REMOTE_PASSWORD }}
+        privateKey: ${{ secrets.REMOTE_KEY }}
+        
+        
