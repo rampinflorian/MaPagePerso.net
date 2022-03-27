@@ -26,7 +26,7 @@ namespace MaPagePerso.net.Controllers.API
 
         public IActionResult GetExperienceYears()
         {
-            return Ok(GetDiffBetweenNow(new DateTime(2014, 9, 25)));
+            return Ok(GetDiffBetweenNow(new DateTime(2012, 9, 25)));
         }
 
         private static int GetDiffBetweenNow(DateTime anniversaryDate)
