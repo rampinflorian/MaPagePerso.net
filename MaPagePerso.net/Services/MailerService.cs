@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using Core.Flash;
 using MailKit.Net.Smtp;
 using MaPagePerso.net.Form;
 using Microsoft.Extensions.Configuration;
@@ -17,8 +16,13 @@ namespace MaPagePerso.net.Services
         {
             _message = message;
 
+#if DEBUG
             _authUsername = configuration.GetSection("Mailer").GetSection("Username").Value;
             _authPassword = configuration.GetSection("Mailer").GetSection("Password").Value;
+#elif RELEASE
+            Environment.GetEnvironmentVariable("MAILER_USERNAME");
+            Environment.GetEnvironmentVariable("MAILER_PASSWORD");
+#endif
 
             _message.From.Add(MailboxAddress.Parse("contact@florianrampin.fr"));
             _message.To.Add(MailboxAddress.Parse("contact@florianrampin.fr"));
@@ -27,10 +31,10 @@ namespace MaPagePerso.net.Services
         public async Task SendContact(Mailer mailer)
         {
             _message.Subject = $"FlorianRampin.fr - Nouveau contact de : {mailer.Username}";
-            
-            #if DEBUG
+
+#if DEBUG
             _message.Subject = "#DEBUG - " + _message.Subject;
-            #endif
+#endif
 
             _message.Body = new TextPart("plain")
             {

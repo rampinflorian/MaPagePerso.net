@@ -21,9 +21,11 @@ namespace MaPagePerso.net
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private readonly IWebHostEnvironment _env;
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
+            _env = env;
         }
 
         public IConfiguration Configuration { get; }
@@ -31,10 +33,14 @@ namespace MaPagePerso.net
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = "";
+            connectionString = _env.IsDevelopment() ? Configuration.GetConnectionString("DefaultConnection") : Environment.GetEnvironmentVariable("DATABASE_URL");
+
+            
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDatabaseDeveloperPageExceptionFilter();
+            {
+                if (connectionString != null) options.UseSqlServer(connectionString);
+            });
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
