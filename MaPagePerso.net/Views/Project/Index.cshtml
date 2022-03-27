@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<Project> 
+@{
     ViewData["Title"] = "Mes projets";
 }
 
@@ -10,92 +11,22 @@
     <!-- News -->
     <div class="news-grid">
         <!-- Post -->
-        <article class="news-item box">
-                    <a href="https://thelasthope.fr">
-                        <div class="news-item__image-wrap overlay overlay--45">
-                            <div class="news-item__date">LUA</div>
-                            <img class="cover lazyload" src="~/images/projects/thelasthope.png" alt=""/>
-                        </div>
-                        </a>
-                    <div class="news-item__caption">
-                        <h2 class="title title--h4">The Last Hope - <small>2022</small></h2>
-                        <p>#JeuVidéo - Conception et intégration de scripts LUA pour un serveur de jeu communautaire sur Grand Theft Auto V version FIVEM (Rôle Play) capable d'accueillir plus de 100 joueurs simultanés.</p>
+        @foreach (Project project in Model)
+        {
+            <article class="news-item box">
+                <a href="https://thelasthope.fr">
+                    <div class="news-item__image-wrap overlay overlay--45">
+                        <div class="news-item__date">@project.Language</div>
+                        <img class="cover lazyload" src="~/images/projects/@project.Image" alt=""/>
                     </div>
-                </article>
-        <article class="news-item box">
-            <a href="https://distillerie-gtarp.fr/">
-                <div class="news-item__image-wrap overlay overlay--45">
-                    <div class="news-item__date">C#/ASPNET5</div>
-                    <img class="cover lazyload" src="~/images/projects/DistillerieManzibar.png" alt=""/>
-                </div>
                 </a>
-            <div class="news-item__caption">
-                <h2 class="title title--h4">Distillerie Manzibar - <small>2021</small></h2>
-                <p>#JeuVidéo - Site web pour la gestion du métier "Distillerie" dans l'univers Grand Theft Auto V Version FIVEM (Rôle Play).</p>
-            </div>
-        </article>
-        <article class="news-item box">
-            <a asp-controller="Home" asp-action="Index">
-            <div class="news-item__image-wrap overlay overlay--45">
-                <div class="news-item__date">C#/ASPNET5</div>
-                <img class="cover lazyload" src="~/images/projects/mapageperso.png" alt=""/>
-            </div>
-            </a>
-            <div class="news-item__caption">
-                <h2 class="title title--h4">Ma page perso - <small>2021</small></h2>
-                <p>Ma page personnelle sur laquelle vous naviguez actuellement.</p>
-            </div>
-        </article>
-        <article class="news-item box">
-            <div class="news-item__image-wrap overlay overlay--45">
-                <div class="news-item__date">PHP/SYMFONY</div>
-                <img class="cover lazyload" src="~/images/projects/tg.png" alt=""/>
-            </div>
-            <div class="news-item__caption">
-                <h2 class="title title--h4">Application de télégestion - <small>2020</small></h2>
-                <p>Une application développée pour la société qui m'emploie. Elle permet la saisie des demandes de facturation des clients finaux.</p>
-            </div>
-        </article>
-        <article class="news-item box">
-            <div class="news-item__image-wrap overlay overlay--45">
-                <div class="news-item__date">PHP/SYMFONY</div>
-                <img class="cover lazyload" src="~/images/projects/nowtilus.png" alt=""/>
-            </div>
-            <div class="news-item__caption">
-                <h2 class="title title--h4">Nowtilus - <small>2020</small></h2>
-                <p>Un outil personnel avec lecteur de flux RSS personalisable, gestion des clients de ma compagne, connecteur à l'API Easybac...</p>
-            </div>
-        </article>
-        <article class="news-item box">
-            <div class="news-item__image-wrap overlay overlay--45">
-                <div class="news-item__date">PHP/SYMFONY</div>
-                <img class="cover lazyload" src="~/images/projects/easybacapi.png" alt=""/>
-            </div>
-            <div class="news-item__caption">
-                <h2 class="title title--h4">API Easybac - <small>2020</small></h2>
-                <p>Une API contenant les tests d'eau de mon aquarium. Utilisation de l'API effectuée sur l'outil Nowtilus.</p>
-            </div>
-        </article>
+                <div class="news-item__caption">
+                    <h2 class="title title--h4">@project.Title - <small>@project.CreatedAt.ToString("yyyy")</small></h2>
+                    <p>@project.Description</p>
+                </div>
+            </article>
+        }
 
-        <article class="news-item box">
-            <div class="news-item__image-wrap overlay overlay--45">
-                <div class="news-item__date">C#/WF</div>
-                <img class="cover lazyload" src="~/images/projects/ans1.png" alt=""/>
-            </div>
-            <div class="news-item__caption">
-                <h2 class="title title--h4">SpiderLink - <small>2016</small></h2>
-                <p>Une application qui met à disposition les URL des mises à jour, gestion des utilisateurs et mailing lors de la disponibilité d'une nouvelle version.</p>
-            </div>
-        </article>
-        <article class="news-item box">
-            <div class="news-item__image-wrap overlay overlay--45">
-                <div class="news-item__date">C#/WF</div>
-                <img class="cover lazyload" src="~/images/projects/ans2.png" alt=""/>
-            </div>
-            <div class="news-item__caption">
-                <h2 class="title title--h4">OutilFormation - <small>2016</small></h2>
-                <p>Une application de suivi de formation horodatée avec génération automatique d'une remarque en fonction de certains éléments métiers.</p>
-            </div>
-        </article>
+
     </div>
 </div>

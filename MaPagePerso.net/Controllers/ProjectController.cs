@@ -4,20 +4,22 @@ using MaPagePerso.net.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MaPagePerso.net.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace MaPagePerso.net.Controllers
 {
     public class ProjectController : Controller
     {
-        private readonly ILogger<ProjectController> _logger;
+        private readonly ApplicationDbContext _context;
 
-        public ProjectController(ILogger<ProjectController> logger, ApplicationDbContext context)
+        public ProjectController(ApplicationDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
         public async Task<IActionResult> Index()
         {
-            return View();
+            var projects = await _context.Projects.ToListAsync();
+            return View(projects);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

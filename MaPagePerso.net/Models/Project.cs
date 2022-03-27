@@ -10,5 +10,6 @@ namespace MaPagePerso.net.Models
         public DateTime CreatedAt { get; set; }
         public string Language { get; set; }
         public string Image { get; set; }
+        public string Url { get; set; }
     }
 }
