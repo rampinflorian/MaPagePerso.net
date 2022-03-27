@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using MailKit.Net.Smtp;
 using MaPagePerso.net.Form;
 using Microsoft.Extensions.Configuration;
@@ -20,8 +21,8 @@ namespace MaPagePerso.net.Services
             _authUsername = configuration.GetSection("Mailer").GetSection("Username").Value;
             _authPassword = configuration.GetSection("Mailer").GetSection("Password").Value;
 #elif RELEASE
-            Environment.GetEnvironmentVariable("MAILER_USERNAME");
-            Environment.GetEnvironmentVariable("MAILER_PASSWORD");
+            _authUsername = Environment.GetEnvironmentVariable("MAILER_USERNAME");
+            _authPassword = Environment.GetEnvironmentVariable("MAILER_PASSWORD");
 #endif
 
             _message.From.Add(MailboxAddress.Parse("contact@florianrampin.fr"));
