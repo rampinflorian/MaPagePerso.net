@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using MaPagePerso.net.Data;
 using Microsoft.AspNetCore.Mvc;
@@ -18,7 +19,7 @@ namespace MaPagePerso.net.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var projects = await _context.Projects.ToListAsync();
+            var projects = await _context.Projects.OrderByDescending(m => m.CreatedAt).ToListAsync();
             return View(projects);
         }
 
