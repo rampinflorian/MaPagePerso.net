@@ -14,7 +14,7 @@
         @foreach (Project project in Model)
         {
             <article class="news-item box">
-                <a href="https://thelasthope.fr">
+                <a href="@project.Url">
                     <div class="news-item__image-wrap overlay overlay--45">
                         <div class="news-item__date">@project.Language</div>
                         <img class="cover lazyload" src="~/images/projects/@project.Image" alt=""/>
