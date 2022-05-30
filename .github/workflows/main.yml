@@ -2,8 +2,8 @@ name: Publish and Deploy Master
 
 on: 
   push:
-    branches:
-    - master
+    tags:
+     'release-[0-9].[0-9]+.[0-9]+'
 
 jobs:
   build:
