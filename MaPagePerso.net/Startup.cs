@@ -90,12 +90,6 @@ namespace MaPagePerso.net
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(name: "Contact",
-                    pattern: "contact/mailer",
-                    defaults: new { controller = "Contact", action = "Mailer"});
-                endpoints.MapControllerRoute(name: "Contact",
-                    pattern: "contact/",
-                    defaults: new { controller = "Contact", action = "Index"});
                 endpoints.MapControllerRoute(name: "Resume",
                     pattern: "resume/",
                     defaults: new { controller = "Resume", action = "Index"});
