@@ -28,7 +28,12 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Controllers\API" />
       <Folder Include="Migrations" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\Resume\Index.cshtml" />
     </ItemGroup>
 
 </Project>

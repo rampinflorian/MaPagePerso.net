@@ -67,7 +67,7 @@
 <section id="hero">
     <div class="hero-container">
         <h1>Florian Rampin</h1>
-        <h2>Développeur de logiciels métiers</h2>
+        <h2>Développeur de logiciel métier</h2>
         <a href="#about" class="btn-scroll scrollto" title="Scroll Down">
             <i class="bx bx-chevron-down"></i>
         </a>
@@ -84,12 +84,12 @@
 <footer id="footer">
     <div class="container">
         <h3>Florian Rampin</h3>
-        <p>Développeur de logiciels métiers</p>
+        <p>Développeur de logiciel métier.</p>
         <div class="copyright">
             &copy; Copyright
             <strong>
                 <span>FlorianRampin</span>
-            </strong>. All Rights Reserved
+            </strong>
         </div>
     </div>
 </footer><!-- End Footer -->
@@ -110,27 +110,6 @@
 <!-- Template Main JS File -->
 <script src="~/js/main.js"></script>
 
-<script >
-        $(document).ready(function () {
-            
-            $.ajax(window.location.origin + '/Layout/GetYearsOld', {
-                success: function (data) {
-                   document.getElementById('years-old-id').textContent = data + " ans";
-                },
-                error: function () {
-                    // show alert or something
-                }
-            });
-            $.ajax(window.location.origin + '/Layout/GetExperienceYears', {
-                success: function (data) {
-                   document.getElementById('years-experience-id').textContent = data + " ans";
-                },
-                error: function () {
-                    // show alert or something
-                }
-            });
-        })
-</script>
 
 @await RenderSectionAsync("Scripts", required: false)
 </body>

@@ -53,6 +53,7 @@ namespace MaPagePerso.net
             
             // AutoWiring
             services.AddTransient<MailerService>();
+            services.AddTransient<GetYearsService>();
             services.AddTransient<MimeMessage>();
             
             services.Configure<ForwardedHeadersOptions>(options =>
@@ -90,12 +91,6 @@ namespace MaPagePerso.net
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(name: "Resume",
-                    pattern: "resume/",
-                    defaults: new { controller = "Resume", action = "Index"});
-                endpoints.MapControllerRoute(name: "Project",
-                    pattern: "project/",
-                    defaults: new { controller = "Project", action = "Index"});
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

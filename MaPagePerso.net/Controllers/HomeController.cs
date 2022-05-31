@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using AspNetCore.ReCaptcha;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MaPagePerso.net.Models;
 using MaPagePerso.net.Services;
+using MaPagePerso.net.ViewsModels;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,23 +21,26 @@ namespace MaPagePerso.net.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IFlasher _flasher;
         private readonly MailerService _mailerService;
+        private readonly GetYearsService _getYearsService;
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, IFlasher flasher, MailerService mailerService)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, IFlasher flasher, MailerService mailerService, GetYearsService getYearsService)
         {
             _context = context;
             _flasher = flasher;
             _mailerService = mailerService;
+            _getYearsService = getYearsService;
         }
         public async Task<IActionResult> Index()
         {
             var projects = await _context.Projects.OrderByDescending(m => m.CreatedAt).ToListAsync();
-            return View(projects);
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
+            return View(new HomeViewsModels 
+                { Projects = projects,
+                    mailer = new Mailer(),
+                    YearsOld = _getYearsService.GetYearsOld(),
+                    YearsExperience = _getYearsService.GetExperienceYears()
+                }
+            );
+            
         }
         
         [HttpPost]
