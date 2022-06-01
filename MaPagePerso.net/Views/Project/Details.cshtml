@@ -1,0 +1,57 @@
+@model Project
+
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "_Layout";
+}
+
+<!-- ======= Breadcrumbs Section ======= -->
+<section class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Détail du projet</h2>
+        </div>
+    </div>
+</section><!-- Breadcrumbs Section -->
+
+<!-- ======= Portfolio Details Section ======= -->
+<section id="portfolio-details" class="portfolio-details">
+    <div class="container">
+
+        <div class="row gy-4">
+
+            <div class="col-lg-8">
+                <div class="portfolio-details-slider swiper">
+                    <div class="swiper-wrapper align-items-center">
+
+                        <div class="swiper-slide">
+                            <img src="~/images/projects/@Model.Image" alt="">
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="portfolio-info">
+                    <h3>Project information</h3>
+                    <ul>
+                        <li><strong>Nom</strong>: @Model.Title</li>
+                        <li><strong>Langage</strong>: @Model.Language</li>
+                        <li><strong>Date de création</strong>: @Model.CreatedAt.ToString("d")</li>
+                        <li><strong>URL</strong>: <a href="@Model.Url">@Model.Url</a></li>
+                    </ul>
+                </div>
+                <div class="portfolio-description">
+                    <h2>Présentation du projet</h2>
+                    <p>
+                        @Model.Description
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section><!-- End Portfolio Details Section -->

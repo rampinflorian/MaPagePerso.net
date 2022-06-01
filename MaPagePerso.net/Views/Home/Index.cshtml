@@ -2,7 +2,7 @@
 @using AspNetCore.ReCaptcha
 @model MaPagePerso.net.ViewsModels.HomeViewsModels
 @{
-    ViewData["Title"] = "Mes projets";
+    ViewData["Title"] = "";
 }
 
 <!-- ======= About Me Section ======= -->
@@ -12,7 +12,9 @@
         <div class="section-title">
             <span>A PROPOS</span>
             <h2>A Propos</h2>
-            <p><i>Mon identité ne se limite pas à des pixels sur un écran...</i></p>
+            <p>
+                <i>Mon identité ne se limite pas à des pixels sur un écran...</i>
+            </p>
         </div>
 
         <div class="row">
@@ -23,18 +25,18 @@
                         <div class="col-lg-12">
                             <ul>
                                 <li>
-                                    
+
                                     <span>
                                         Je m'appelle <b>Florian Rampin</b>, je suis né à Toulon en 1990.
-                                                <p>
-                                                <p>
-                                                Tombé dans la technologie depuis mon plus jeune âge et après une adolescence de geek à toucher à tout dans ce domaine, la logique fût de poursuivre cette passion en milieu professionnel.
-                                                <p>
-                                                Après de nombreuses années à l'école, me voilà aujourd'hui responsable d'un support technique pour un logiciel de facturation.
-                                                <p>
+                                        <p>
+                                        <p>
+                                        Tombé dans la technologie depuis mon plus jeune âge et après une adolescence de geek à toucher à tout dans ce domaine, la logique fût de poursuivre cette passion en milieu professionnel.
+                                        <p>
+                                        Après de nombreuses années à l'école, me voilà aujourd'hui responsable d'un support technique pour un logiciel de facturation.
+                                        <p>
                                     </span>
                                 </li>
-                                
+
                             </ul>
                         </div>
                     </div>
@@ -77,7 +79,9 @@
         <div class="section-title">
             <span>CURICULUM VITAE</span>
             <h2>CURICULUM VITAE</h2>
-            <p><i>D'où je viens et ce que je sais faire</i></p>
+            <p>
+                <i>D'où je viens et ce que je sais faire</i>
+            </p>
         </div>
 
         <div class="row">
@@ -171,7 +175,7 @@
         <div class="section-title">
             <span>MES PROJETS</span>
             <h2>Mes Projets</h2>
-            <p>Parce qu'un bon développeur doit pouvoir présenter quelques projets...</p>
+            <p><i>Parce qu'un bon développeur doit pouvoir présenter quelques projets...</i></p>
         </div>
 
         <div class="row portfolio-container">
@@ -185,10 +189,10 @@
                     <div class="portfolio-info">
                         <h4>@project.Title</h4>
                         <p>@project.Language</p>
-                        <a href="@project.Url" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3">
+                        <a href="~/images/projects/@project.Image" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="@project.Title">
                             <i class="bx bx-plus"></i>
                         </a>
-                        <a href="#" class="details-link" title="More Details">
+                        <a asp-controller="Project" asp-action="Details" asp-route-id="@project.Id" class="details-link" title="More Details">
                             <i class="bx bx-link"></i>
                         </a>
                     </div>
@@ -210,7 +214,9 @@
         <div class="section-title">
             <span>CONTACT</span>
             <h2>Contact</h2>
-            <p><i>Besoin d'information ? Une envie de me contacter ?</i></p>
+            <p>
+                <i>Besoin d'information ? Une envie de me contacter ?</i>
+            </p>
         </div>
 
         <div class="row">
@@ -246,7 +252,7 @@
                         <div class="info-box mt-4">
                             <i class="bx bx-phone-call"></i>
                             <h3>Par téléphone</h3>
-                            <p>(+33)6 51 35 62 46</p>
+                            <p>(+33) 6 51 35 62 46</p>
                         </div>
                     </div>
                 </div>

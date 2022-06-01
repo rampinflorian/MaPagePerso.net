@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+<!DOCTYPE html>
 <html lang="fr">
 
 <head>
@@ -41,21 +42,31 @@
 
     <nav id="navbar" class="navbar">
         <ul>
-            <li>
-                <a class="nav-link scrollto active" href="#hero">Accueil</a>
-            </li>
-            <li>
-                <a class="nav-link scrollto" href="#about">A propos</a>
-            </li>
-            <li>
-                <a class="nav-link scrollto" href="#resume">CV</a>
-            </li>
-            <li>
-                <a class="nav-link scrollto " href="#portfolio">Projets</a>
-            </li>
-            <li>
-                <a class="nav-link scrollto" href="#contact">Contact</a>
-            </li>
+            @if (ViewContext.RouteData.Values["controller"]?.ToString() == "Home")
+            {
+                <li>
+                    <a class="nav-link scrollto active" href="#hero">Accueil</a>
+                </li>
+                <li>
+                    <a class="nav-link scrollto" href="#about">A propos</a>
+                </li>
+                <li>
+                    <a class="nav-link scrollto" href="#resume">CV</a>
+                </li>
+                <li>
+                    <a class="nav-link scrollto " href="#portfolio">Projets</a>
+                </li>
+                <li>
+                    <a class="nav-link scrollto" href="#contact">Contact</a>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a class="nav-link scrollto" asp-controller="Home" asp-action="Index">Accueil</a>
+                </li>
+            }
+
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->
@@ -76,7 +87,7 @@
 
 <main id="main">
 
-@RenderBody()
+    @RenderBody()
 
 </main><!-- End #main -->
 
