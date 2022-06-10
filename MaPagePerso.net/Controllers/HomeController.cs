@@ -53,13 +53,13 @@ namespace MaPagePerso.net.Controllers
                 var resCaptcha = ModelState.First(k => k.Key == "Recaptcha").Value;
                 if (resCaptcha.ValidationState == ModelValidationState.Invalid)
                 {
-                    _flasher.Flash(Types.Danger, "BIP BOOP BUP ! Vous êtes un robot ? Il faut valider le Captcha !", dismissable: true);
+                    _flasher.Flash(Types.Danger, "BIP BOOP BUP ! Vous êtes un robot ? Il faut valider le Captcha !", dismissable: false);
                 }
                 return RedirectToAction("Index");
             }
 
             await _mailerService.SendContact(mailer);            
-            _flasher.Flash(Types.Success, "Votre message a bien été envoyé !", dismissable: true);
+            _flasher.Flash(Types.Success, "Votre message a bien été envoyé !", dismissable: false);
 
             
             return RedirectToAction("Index");
