@@ -1,5 +1,4 @@
-name: Publish and Deploy Master
-
+name: deploy
 on: 
   push:
     tags:
