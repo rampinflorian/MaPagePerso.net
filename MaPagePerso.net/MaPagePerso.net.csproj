@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <UserSecretsId>aspnet-MaPagePerso.net-51C69C77-E5F7-4D8A-959A-FA08ADB7DB32</UserSecretsId>
     </PropertyGroup>
 
