@@ -28,11 +28,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Migrations" />
+      <_ContentIncludedByDefault Remove="Views\Resume\Index.cshtml" />
     </ItemGroup>
 
     <ItemGroup>
-      <_ContentIncludedByDefault Remove="Views\Resume\Index.cshtml" />
+      <Folder Include="Data\" />
     </ItemGroup>
 
 </Project>

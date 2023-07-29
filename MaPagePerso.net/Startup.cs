@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
-using MaPagePerso.net.Data;
 using MaPagePerso.net.Services;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
@@ -33,17 +32,9 @@ namespace MaPagePerso.net
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = "";
-            connectionString = _env.IsDevelopment() ? Configuration.GetConnectionString("DefaultConnection") : Environment.GetEnvironmentVariable("DATABASE_URL");
-
             
-            services.AddDbContext<ApplicationDbContext>(options =>
-            {
-                if (connectionString != null) options.UseSqlServer(connectionString);
-            });
-
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddFlashes().AddMvc();
@@ -55,6 +46,7 @@ namespace MaPagePerso.net
             services.AddTransient<MailerService>();
             services.AddTransient<GetYearsService>();
             services.AddTransient<MimeMessage>();
+            services.AddTransient<ProjectService>();
             
             services.Configure<ForwardedHeadersOptions>(options =>
             {

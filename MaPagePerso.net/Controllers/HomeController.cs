@@ -1,40 +1,37 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using AspNetCore.ReCaptcha;
 using Core.Flash;
-using MaPagePerso.net.Data;
 using MaPagePerso.net.Form;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using MaPagePerso.net.Models;
 using MaPagePerso.net.Services;
 using MaPagePerso.net.ViewsModels;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.EntityFrameworkCore;
 
 namespace MaPagePerso.net.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ApplicationDbContext _context;
         private readonly IFlasher _flasher;
         private readonly MailerService _mailerService;
         private readonly GetYearsService _getYearsService;
+        private readonly ProjectService _projectService;
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, IFlasher flasher, MailerService mailerService, GetYearsService getYearsService)
+        public HomeController(IFlasher flasher, MailerService mailerService, GetYearsService getYearsService, ProjectService projectService)
         {
-            _context = context;
             _flasher = flasher;
             _mailerService = mailerService;
             _getYearsService = getYearsService;
+            _projectService = projectService;
         }
         public async Task<IActionResult> Index()
         {
-            var projects = await _context.Projects.OrderByDescending(m => m.CreatedAt).ToListAsync();
+            
+
+            
             return View(new HomeViewsModels 
-                { Projects = projects,
+                { 
+                    Projects = _projectService.GetAllProjects().OrderByDescending(m => m.CreatedAt).ToList(),
                     mailer = new Mailer(),
                     YearsOld = _getYearsService.GetYearsOld(),
                     YearsExperience = _getYearsService.GetExperienceYears()
