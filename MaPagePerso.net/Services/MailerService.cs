@@ -25,13 +25,13 @@ namespace MaPagePerso.net.Services
             _authPassword = Environment.GetEnvironmentVariable("MAILER_PASSWORD");
 #endif
 
-            _message.From.Add(MailboxAddress.Parse("contact@florianrampin.fr"));
-            _message.To.Add(MailboxAddress.Parse("contact@florianrampin.fr"));
+            _message.From.Add(MailboxAddress.Parse("florian@rampin.me"));
+            _message.To.Add(MailboxAddress.Parse("florian@rampin.me"));
         }
 
         public async Task SendContact(Mailer mailer)
         {
-            _message.Subject = $"FlorianRampin.fr - Nouveau contact de : {mailer.Username}";
+            _message.Subject = $"cv.rampin.me - Nouveau contact de : {mailer.Username}";
 
 #if DEBUG
             _message.Subject = "#DEBUG - " + _message.Subject;
