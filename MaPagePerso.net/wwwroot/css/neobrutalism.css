@@ -1,0 +1,303 @@
+﻿/*--------------------------------------------------------------
+  neobrutalism.css - Neo-Brutalism Design System (Pastel)
+  Reusable design tokens, base styles & component primitives.
+  Include BEFORE your site-specific stylesheet.
+--------------------------------------------------------------*/
+
+/* ==========================================================
+   1. DESIGN TOKENS (CSS Variables)
+   ========================================================== */
+:root {
+  /* Palette */
+  --nb-pink: #B8B8F0;
+  --nb-lavender: #C3B1E1;
+  --nb-mint: #B2F2BB;
+  --nb-yellow: #FFF3B0;
+  --nb-peach: #FFDAB9;
+  --nb-blue: #A7C7E7;
+  --nb-coral: #F4978E;
+
+  /* Surfaces */
+  --nb-bg: #FFF8F0;
+  --nb-bg-white: #FFFFFF;
+
+  /* Text */
+  --nb-text: #1a1a1a;
+  --nb-text-mid: #333333;
+
+  /* Borders & Shadows */
+  --nb-border-color: #1a1a1a;
+  --nb-border-width: 3px;
+  --nb-shadow: 5px 5px 0px #1a1a1a;
+  --nb-shadow-sm: 3px 3px 0px #1a1a1a;
+  --nb-shadow-lg: 7px 7px 0px #1a1a1a;
+  --nb-shadow-xl: 8px 8px 0px #1a1a1a;
+
+  /* Misc */
+  --nb-radius: 0px;
+  --nb-font: "Space Grotesk", "Open Sans", sans-serif;
+  --nb-font-heading: "Space Grotesk", "Raleway", sans-serif;
+  --nb-transition: 0.2s;
+}
+
+/* ==========================================================
+   2. BASE RESET & TYPOGRAPHY
+   ========================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--nb-font);
+  color: var(--nb-text);
+  background-color: var(--nb-bg);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--nb-text);
+  text-decoration: none;
+  font-weight: 600;
+}
+a:hover {
+  color: var(--nb-text);
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--nb-font-heading);
+  font-weight: 700;
+  color: var(--nb-text);
+}
+
+/* ==========================================================
+   3. COMPONENT: CARD  (.nb-card)
+   ========================================================== */
+.nb-card {
+  background: var(--nb-bg-white);
+  border: var(--nb-border-width) solid var(--nb-border-color);
+  box-shadow: var(--nb-shadow);
+  transition: all var(--nb-transition);
+}
+.nb-card:hover {
+  box-shadow: var(--nb-shadow-lg);
+  transform: translate(-2px, -2px);
+}
+
+/* ==========================================================
+   4. COMPONENT: BADGE / TAG  (.nb-badge)
+   ========================================================== */
+.nb-badge {
+  display: inline-block;
+  padding: 5px 15px;
+  font-weight: 700;
+  font-size: 14px;
+  border: 2px solid var(--nb-border-color);
+  box-shadow: 2px 2px 0px var(--nb-border-color);
+  background: var(--nb-peach);
+  color: var(--nb-text);
+}
+.nb-badge--mint   { background: var(--nb-mint); }
+.nb-badge--yellow { background: var(--nb-yellow); }
+.nb-badge--blue   { background: var(--nb-blue); }
+.nb-badge--pink   { background: var(--nb-pink); }
+
+/* ==========================================================
+   5. COMPONENT: BUTTON  (.nb-btn)
+   ========================================================== */
+.nb-btn,
+.btn-primary {
+  display: inline-block;
+  padding: 10px 28px;
+  font-family: var(--nb-font);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--nb-text) !important;
+  background: var(--nb-pink) !important;
+  border: var(--nb-border-width) solid var(--nb-border-color) !important;
+  border-radius: var(--nb-radius) !important;
+  box-shadow: var(--nb-shadow-sm) !important;
+  cursor: pointer;
+  transition: all var(--nb-transition);
+}
+.nb-btn:hover,
+.btn-primary:hover {
+  background: var(--nb-coral) !important;
+  box-shadow: var(--nb-shadow) !important;
+  transform: translate(-2px, -2px);
+  color: var(--nb-text) !important;
+  text-decoration: none;
+}
+
+/* ==========================================================
+   6. COMPONENT: FORM CONTROLS
+   ========================================================== */
+.form-control {
+  border-radius: var(--nb-radius) !important;
+  border: 2px solid var(--nb-border-color) !important;
+  font-family: var(--nb-font);
+  font-weight: 500;
+}
+.form-control:focus {
+  background-color: var(--nb-yellow) !important;
+  border-color: var(--nb-border-color) !important;
+  box-shadow: var(--nb-shadow-sm) !important;
+  outline: none;
+}
+
+/* ==========================================================
+   7. COMPONENT: ICON BOX  (.nb-icon)
+   ========================================================== */
+.nb-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border: var(--nb-border-width) solid var(--nb-border-color);
+  box-shadow: var(--nb-shadow-sm);
+  background: var(--nb-lavender);
+  font-size: 36px;
+  color: var(--nb-text);
+  transition: all var(--nb-transition);
+}
+
+/* ==========================================================
+   8. COMPONENT: SOCIAL LINK  (.nb-social)
+   ========================================================== */
+.nb-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  font-size: 18px;
+  color: var(--nb-text);
+  background: var(--nb-bg-white);
+  border: 2px solid var(--nb-border-color);
+  box-shadow: var(--nb-shadow-sm);
+  transition: all var(--nb-transition);
+}
+.nb-social:hover {
+  background: var(--nb-lavender);
+  box-shadow: var(--nb-shadow);
+  transform: translate(-2px, -2px);
+  text-decoration: none;
+  color: var(--nb-text);
+}
+
+/* ==========================================================
+   9. COMPONENT: SECTION TITLE  (.nb-section-title)
+   ========================================================== */
+.nb-section-title {
+  display: inline-block;
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 8px 24px;
+  border: var(--nb-border-width) solid var(--nb-border-color);
+  box-shadow: var(--nb-shadow-sm);
+  background: var(--nb-mint);
+  color: var(--nb-text);
+}
+
+/* ==========================================================
+   10. COMPONENT: BACK TO TOP  (.nb-back-to-top)
+   ========================================================== */
+.nb-back-to-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 996;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--nb-yellow);
+  border-radius: var(--nb-radius);
+  border: var(--nb-border-width) solid var(--nb-border-color);
+  box-shadow: var(--nb-shadow-sm);
+  transition: all var(--nb-transition);
+  font-size: 28px;
+  color: var(--nb-text);
+}
+.nb-back-to-top:hover {
+  background: var(--nb-peach);
+  box-shadow: var(--nb-shadow);
+  transform: translate(-2px, -2px);
+  color: var(--nb-text);
+}
+.nb-back-to-top.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* ==========================================================
+   11. UTILITIES
+   ========================================================== */
+.nb-border       { border: var(--nb-border-width) solid var(--nb-border-color); }
+.nb-border-top   { border-top: var(--nb-border-width) solid var(--nb-border-color); }
+.nb-border-bottom{ border-bottom: var(--nb-border-width) solid var(--nb-border-color); }
+.nb-shadow       { box-shadow: var(--nb-shadow); }
+.nb-shadow-sm    { box-shadow: var(--nb-shadow-sm); }
+.nb-shadow-lg    { box-shadow: var(--nb-shadow-lg); }
+
+.nb-bg-pink      { background-color: var(--nb-pink); }
+.nb-bg-lavender  { background-color: var(--nb-lavender); }
+.nb-bg-mint      { background-color: var(--nb-mint); }
+.nb-bg-yellow    { background-color: var(--nb-yellow); }
+.nb-bg-peach     { background-color: var(--nb-peach); }
+.nb-bg-blue      { background-color: var(--nb-blue); }
+.nb-bg-coral     { background-color: var(--nb-coral); }
+.nb-bg-cream     { background-color: var(--nb-bg); }
+.nb-bg-white     { background-color: var(--nb-bg-white); }
+
+.nb-hover-lift {
+  transition: all var(--nb-transition);
+}
+.nb-hover-lift:hover {
+  box-shadow: var(--nb-shadow-lg);
+  transform: translate(-2px, -2px);
+}
+
+/* ==========================================================
+   12. ERROR / ALERTS
+   ========================================================== */
+.nb-alert-error {
+  color: var(--nb-text);
+  background: var(--nb-coral);
+  display: inline-block;
+  padding: 6px 16px;
+  border: 2px solid var(--nb-border-color);
+  box-shadow: var(--nb-shadow-sm);
+  margin-bottom: 10px;
+}
+.nb-alert-success {
+  color: var(--nb-text);
+  background: var(--nb-mint);
+  display: inline-block;
+  padding: 6px 16px;
+  border: 2px solid var(--nb-border-color);
+  box-shadow: var(--nb-shadow-sm);
+  margin-bottom: 10px;
+}
+
+/* ==========================================================
+   13. ANIMATIONS
+   ========================================================== */
+@keyframes nb-up-down {
+  0%   { transform: translateY(5px); }
+  100% { transform: translateY(-5px); }
+}
+@keyframes nb-spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
