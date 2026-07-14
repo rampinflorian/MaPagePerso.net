@@ -9,8 +9,8 @@ Le suivi de tâches et les décisions techniques de ce projet sont
 centralisés dans l'orchestrateur `E:\Nowtilus` :
 
 - Le suivi de **tâches** se fait dans **YouTrack** (`noovio.youtrack.cloud`,
-  serveur MCP niveau utilisateur), projet `MPP` (clé à confirmer — pas
-  encore créé au 2026-07-14) — pas dans `vault/tasks/` (déprécié).
+  serveur MCP niveau utilisateur), projet `MPP` — pas dans `vault/tasks/`
+  (déprécié).
 - En début de session, lire `../../Nowtilus/vault/progress.md` (statut
   global du projet) pour récupérer le contexte.
 - Si une décision technique structurante est prise, créer une entrée dans
