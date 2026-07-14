@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "additionalDirectories": [
+      "../../Nowtilus/vault"
+    ],
+    "deny": [
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/secrets/**)",
+      "Read(**/.ssh/**)",
+      "Edit(**/.env)",
+      "Edit(**/.env.*)",
+      "Write(**/.env)",
+      "Write(**/.env.*)"
+    ]
+  }
+}
