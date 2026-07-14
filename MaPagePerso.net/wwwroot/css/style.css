@@ -1,5 +1,5 @@
 /*--------------------------------------------------------------
-  style.css — Site-specific layout for florianrampin.fr
+  style.css ï¿½ Site-specific layout for florianrampin.fr
   Requires: neobrutalism.css (loaded before this file)
 --------------------------------------------------------------*/
 
@@ -292,6 +292,31 @@
   background: var(--nb-bg-white);
   padding: 8px;
 }
+#hero .brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 20px 0;
+}
+#hero .brand-logo {
+  max-width: 90px;
+  border: var(--nb-border-width) solid var(--nb-border-color);
+  box-shadow: var(--nb-shadow);
+  background: var(--nb-text);
+  padding: 6px;
+}
+#hero .brand-name {
+  font-family: var(--nb-font-heading);
+  font-weight: 700;
+  font-size: 40px;
+  letter-spacing: 1px;
+  color: var(--nb-text);
+  background: var(--nb-peach);
+  padding: 10px 24px;
+  border: var(--nb-border-width) solid var(--nb-border-color);
+  box-shadow: var(--nb-shadow);
+  text-transform: uppercase;
+}
 @media (max-width: 575px) {
   #hero h1 {
     font-size: 36px;
@@ -303,6 +328,18 @@
     text-align: center;
     margin-bottom: 30px;
     font-size: 12px;
+  }
+  #hero .brand-lockup {
+    gap: 10px;
+    margin: 14px 0;
+  }
+  #hero .brand-logo {
+    max-width: 56px;
+    padding: 4px;
+  }
+  #hero .brand-name {
+    font-size: 24px;
+    padding: 8px 14px;
   }
 }
 
@@ -565,7 +602,7 @@ section {
 }
 
 /*--------------------------------------------------------------
-# My Services / Compétences
+# My Services / Compï¿½tences
 --------------------------------------------------------------*/
 .services {
   background: var(--nb-bg);
