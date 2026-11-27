@@ -3,55 +3,29 @@
 @{
     ViewBag.Title = Model.Title;
     Layout = "_Layout";
+    var url = string.IsNullOrWhiteSpace(Model.Url) ? null : (Model.Url.StartsWith("http") ? Model.Url : "https://" + Model.Url);
 }
 
-<!-- ======= Breadcrumbs Section ======= -->
-<section class="breadcrumbs">
-    <div class="container">
-
-        <div class="d-flex justify-content-between align-items-center">
-            <h2>Détail du projet</h2>
-        </div>
+<section class="page-head">
+    <div class="wrap">
+        <span class="kicker">Détail du projet</span>
+        <h1>@Model.Title</h1>
     </div>
-</section><!-- Breadcrumbs Section -->
+</section>
 
-<!-- ======= Portfolio Details Section ======= -->
-<section id="portfolio-details" class="portfolio-details">
-    <div class="container">
-
-        <div class="row gy-4">
-
-            <div class="col-lg-8">
-                <div class="portfolio-details-slider swiper">
-                    <div class="swiper-wrapper align-items-center">
-
-                        <div class="swiper-slide">
-                            <img src="~/images/projects/@Model.Image" alt="">
-                        </div>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            </div>
-
-            <div class="col-lg-4">
-                <div class="portfolio-info">
-                    <h3>informations</h3>
-                    <ul>
-                        <li><strong>Nom</strong>: @Model.Title</li>
-                        <li><strong>Langage</strong>: @Model.Language</li>
-                        <li><strong>Date de création</strong>: @Model.CreatedAt.ToString("d")</li>
-                        <li><strong>URL</strong>: <a href="@Model.Url">@Model.Url</a></li>
-                    </ul>
-                </div>
-                <div class="portfolio-description">
-                    <h2>Présentation</h2>
-                    <p>
-                        @Model.Description
-                    </p>
-                </div>
-            </div>
-
-        </div>
-
+<section class="wrap detail">
+    <div class="ph">
+        <img src="~/images/projects/@Model.Image" alt="Capture du projet @Model.Title">
     </div>
-</section><!-- End Portfolio Details Section -->
+    <div>
+        <dl>
+            <div><dt>Langage</dt><dd>@Model.Language.Replace("/", " · ")</dd></div>
+            <div><dt>Année</dt><dd>@Model.CreatedAt.Year</dd></div>
+            @if (url != null)
+            {
+                <div><dt>Site</dt><dd><a href="@url" target="_blank" rel="noopener">@Model.Url</a></dd></div>
+            }
+        </dl>
+        <p class="muted" style="font-size:18px;margin:0">@Model.Description</p>
+    </div>
+</section>

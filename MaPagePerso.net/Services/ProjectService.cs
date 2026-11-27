@@ -143,6 +143,16 @@ namespace MaPagePerso.net.Services {
                      Language = "ASPNET Core/C#",
                     Image = "aidalap.png",
                     Url = "www.aidalap.fr"
+                },
+                new()
+                {
+                    Id = 15,
+                    CreatedAt = new DateTime(2026, 10, 26),
+                    Title = "PulseMetrics",
+                    Description = "Outils Mythic+ pour World of Warcraft : suivi des alts et analyse de personnage face au top 100, avec un addon compagnon.",
+                    Language = "ASPNET Core/Blazor",
+                    Image = "pulsemetrics.png",
+                    Url = "pulsemetrics.fr"
                 }
             };
         }
