@@ -1,350 +1,283 @@
-﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 @using AspNetCore.ReCaptcha
 @model MaPagePerso.net.ViewsModels.HomeViewsModels
 @{
     ViewData["Title"] = "";
+
+    string Category(string language)
+    {
+        var l = (language ?? "").ToUpperInvariant();
+        if (l.Contains("PHP")) return "php";
+        if (l.Contains("C#") || l.Contains("NET")) return "net";
+        return "other";
+    }
+
+    string ExternalUrl(string url) =>
+        string.IsNullOrWhiteSpace(url) ? null : (url.StartsWith("http") ? url : "https://" + url);
+
+    var stack = new[] { "C#", "ASP.NET Core", "Blazor", ".NET MAUI", "Entity Framework Core", "Symfony", "SQL Server", "MariaDB", "Git", "GitHub Actions", "Rider", "Visual Studio" };
 }
 
-<!-- ======= About Me Section ======= -->
-<section id="about" class="about">
-    <div class="container">
-
-        <div class="section-title">
-            <span>A PROPOS</span>
-            <h2>A Propos</h2>
-            <p>
-                <i>Mon identité ne se limite pas à des pixels sur un écran...</i>
-            </p>
+<!-- ======= Hero ======= -->
+<section class="hero">
+    <div class="wrap">
+        <span class="proof">
+            <img src="~/img/me.jpg" alt="">
+            <span class="dot" aria-hidden="true"></span>
+            Développeur logiciel · Toulon
+        </span>
+        <h1>Moi c'est Florian, je développe des logiciels <mark>métier</mark>.</h1>
+        <p class="lead">Développeur .NET, passé par le support et la hotline avant d'écrire du code. Vous trouverez ici mon parcours, ce que je sais faire et quelques projets.</p>
+        <div class="ctas">
+            <a href="#parcours" class="btn btn-dark">
+                Voir mon parcours
+                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#projets" class="btn btn-line">Mes projets</a>
         </div>
-
-        <div class="row">
-            <div class="image col-lg-4 d-flex align-items-stretch justify-content-center justify-content-lg-start"></div>
-            <div class="col-lg-8 d-flex flex-column align-items-stretch">
-                <div class="content ps-lg-4 d-flex flex-column justify-content-center">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <ul>
-                                <li>
-
-                                    <span>
-                                        Je m'appelle <b>Florian Rampin</b>, je suis né à Toulon en 1990.
-                                        <p>
-                                        <p>
-                                        Tombé dans la technologie depuis mon plus jeune âge et après une adolescence de geek à toucher à tout dans ce domaine, la logique fût de poursuivre cette passion en milieu professionnel.
-                                        <p>
-                                        Après de nombreuses années à l'école, me voilà aujourd'hui développeur pour un logiciel métier de facturation.
-                                        <p>
-                                    </span>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row mt-n4">
-                        <div class="col-md-6 mt-5 d-md-flex align-items-md-stretch">
-                            <div class="count-box">
-                                <i class="bi bi-emoji-smile"></i>
-                                <span data-purecounter-start="0" data-purecounter-end="@Model.YearsOld" data-purecounter-duration="1" class="purecounter"></span>
-                                <p>C'est mon <strong>âge</strong>. Jeune pour certains, plus agé pour d'autres mais opérationnel dans toutes les situations.</p>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 mt-5 d-md-flex align-items-md-stretch">
-                            <div class="count-box">
-                                <i class="bi bi-award"></i>
-                                <span data-purecounter-start="0" data-purecounter-end="@Model.YearsExperience" data-purecounter-duration="1" class="purecounter"></span>
-                                <p>Ce sont mes <strong>années d'expérience</strong> du simple technicien au développeur que je suis aujourd'hui.</p>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6 mt-5 d-md-flex align-items-md-stretch">
-                            <div class="count-box">
-                                <i class="bi bi-clock"></i>
-                                <span data-purecounter-start="0" data-purecounter-end="@Model.Projects.Count" data-purecounter-duration="1" class="purecounter"></span>
-                                <p>C'est le nombre de <strong>projets publics</strong> que j'ai développé et qui sont visibles un peu plus bas !</p>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- End .content-->
-            </div>
-        </div>
-
+        <p class="micro">@Model.YearsExperience ans d'expérience, de la base navale de Toulon au logiciel métier</p>
     </div>
-</section><!-- End About Me Section -->
+</section>
 
-<!-- ======= My Resume Section ======= -->
-<section id="resume" class="resume">
-    <div class="container">
-
-        <div class="section-title">
-            <span>CURICULUM VITAE</span>
-            <h2>CURICULUM VITAE</h2>
-            <p>
-                <i>D'où je viens et ce que je sais faire !</i>
-            </p>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-6">
-                <h3 class="resume-title">Formations</h3>
-                <div class="resume-item">
-                    <h4>Création micro entreprise</h4>
-                    <h5>2026</h5>
-                    <p>
-                        <em>florian rampin - noovio.fr</em><br />
-                        <em>aidalap.fr</em>
-                    </p>
-                </div>
-                <div class="resume-item">
-                    <h4>DUT GEII par Alternance - DCNS Services TOULON (niveau)</h4>
-                    <h5>2012 - 2014</h5>
-                    <p>
-                        <em>IUT Toulon - La Garde</em>
-                    </p>
-                </div>
-                <div class="resume-item">
-                    <h4>License Informatique 1ère année (niveau)</h4>
-                    <h5>2010 - 2012</h5>
-                    <p>
-                        <em>FAC Toulon - La Garde</em>
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <h3 class="resume-title">Expériences professionnelles</h3>
-                <div class="resume-item">
-                    <h4>Développeur logiciel et technicien support niveau II</h4>
-                    <h5>2022 - Aujourd'hui</h5>
-                    <p>
-                        <em>Créagiciel, La Seyne / Mer </em>
-                    </p>
-                    <p>
-                        <ul>
-                            <li>Conception et développement de logiciel métier</li>
-                            <li>Support client niveau 2 et relation avec niveau 3 </li>
-                        </ul>
-                    </p>
-                </div>
-                <div class="resume-item">
-                    <h4>Responsable support hotline niveau II - Technicien logiciel / Dev. Web Symfony</h4>
-                    <h5>2018 - 2022</h5>
-                    <p>
-                        <em>Gentel Global Solutions, La Garde</em>
-                    </p>
-                    <p>
-                        <ul>
-                            <li>Gestion d'équipe</li>
-                            <li>Formation client</li>
-                            <li>Traitement de bugs et évolutions</li>
-                            <li>Développement d'un outil de télégestion (fullstack symfony 5)</li>
-                        </ul>
-                    </p>
-                </div>
-                <div class="resume-item">
-                    <h4>Responsable support hotline niveau II - Technicien logiciel</h4>
-                    <h5>2014 - 2018</h5>
-                    <p>
-                        <em>AidesNSoft, La Garde</em>
-                    </p>
-                    <p>
-                        <ul>
-                            <li>Gestion d'équipe</li>
-                            <li>Formation client</li>
-                            <li>Traitement de bugs et évolutions</li>
-                            <li>Développement d’outils support(C#)</li>
-                            <li>Salon professionnel</li>
-                        </ul>
-                    </p>
-                </div>
-                <div class="resume-item">
-                    <h4>Développement de systèmes et traitement d’obsolescences</h4>
-                    <h5>2012 - 2014</h5>
-                    <p>
-                        <em>Naval-Group, Base Navale Toulon</em>
-                    </p>
-                    <p>
-                        <ul>
-                            <li>Maintenance électronique sur technologies Analogiques/Numériques</li>
-                            <li>Rédaction de manuels utilisateur</li>
-                            <li>Configuration système et réseau</li>
-                        </ul>
-                    </p>
-                </div>
-            </div>
-        </div>
-
+<!-- ======= Bandeau technos ======= -->
+<div class="marquee" aria-label="Technologies maîtrisées : @string.Join(", ", stack)">
+    <div class="track" aria-hidden="true">
+        @for (var pass = 0; pass < 2; pass++)
+        {
+            foreach (var tech in stack)
+            {
+                <span>@tech</span>
+            }
+        }
     </div>
-</section><!-- End My Resume Section -->
+</div>
 
-<section id="services" class="services">
-    <div class="container">
-
-        <div class="section-title">
-            <span>Compétences</span>
-            <h2>Compétences</h2>
-            <p><i>Un peu de détail ne fait pas de mal...</i></p>
+<!-- ======= À propos ======= -->
+<section id="about" class="section section-soft">
+    <div class="wrap about">
+        <figure class="photo reveal">
+            <img src="~/img/me.jpg" alt="Florian Rampin au pied d'une falaise, assurant une voie d'escalade" loading="lazy">
+            <figcaption>Hors écran, au pied d'une voie</figcaption>
+        </figure>
+        <div class="reveal">
+            <span class="kicker">À propos</span>
+            <h2>Mon identité ne se limite pas à des pixels sur un écran.</h2>
+            <p>Je m'appelle Florian, je suis né à Toulon en 1990. Tombé dans la technologie très jeune, après une adolescence de geek à toucher à tout, la suite logique était d'en faire mon métier.</p>
+            <p>Aujourd'hui je développe un logiciel métier de facturation chez Créagiciel. En 2026, j'ai aussi créé Noovio, ma micro-entreprise.</p>
+            <div class="links">
+                <a href="https://github.com/rampinflorian" class="btn btn-line btn-sm">GitHub</a>
+                <a href="https://www.linkedin.com/in/florian-rampin-7070ba162" class="btn btn-line btn-sm">LinkedIn</a>
+            </div>
         </div>
-
-        <div class="row">
-            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                <div class="icon-box">
-                    <div class="icon"><i class='bx bx-globe'></i></div>
-                    <h4 class="title"><a href="">WEB</a></h4>
-                    <p class="description"><b>ASPNET Core, BLAZOR, PHP(Symfony), WEBDEV</b></p>
-                    <p class="mt-3">Moteur APIREST from scratch avec authentification JWT, Modèle MVC, OnePage, Blazor Server, WASM...</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                <div class="icon-box">
-                    <div class="icon"><i class='bx bx-desktop'></i></div>
-                    <h4 class="title"><a href="">CONSOLE/BUREAU</a></h4>
-                    <p class="description"><b>DOTNET, WINDEV</b></p>
-                    <p class="mt-3">Interconnexion API Discord, moteur de test pour API REST automatisé, Application métier, outils support...</p>
-                </div>
-            </div>
-
-
-            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                <div class="icon-box">
-                    <div class="icon"><i class='bx bx-mobile-alt'></i></div>
-                    <h4 class="title"><a href="">MOBILE</a></h4>
-                    <p class="description"><b>MAUI, WINDEV MOBILE</b></p>
-                    <p class="mt-3">Android / iOs, agrégation données API, authentification Bearer...</p>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-                <div class="icon-box">
-                    <div class="icon"><i class='bx bx-bookmark-alt-plus'></i></div>
-                    <h4 class="title"><a href="">DIVERS</a></h4>
-                    <p class="description"><b>GIT, BITBUCKET, GITHUB, GITHUB ACTION, CI/CD, SQL, MYSQL, MARIADB, MSSQL, HFSQL</b> </p>
-                    <p class="mt-3">JIRA, JETBRAINS RIDER, VISUAL STUDIO 2022, VSCODE, ASANA...</p>
-
-                </div>
-            </div>
-
-        </div>
-
     </div>
-</section><!-- End My Services Section -->
+</section>
 
-<!-- ======= My Portfolio Section ======= -->
-<section id="portfolio" class="portfolio">
-    <div class="container">
-
-        <div class="section-title">
-            <span>MES PROJETS</span>
-            <h2>Mes Projets</h2>
-            <p><i>Parce qu'un bon développeur doit pouvoir présenter quelques projets...</i></p>
+<!-- ======= Compétences ======= -->
+<section id="services" class="section section-tight">
+    <div class="wrap">
+        <div class="sec-row reveal">
+            <span class="kicker">Compétences</span>
+            <h2>Ce que je sais faire.</h2>
         </div>
+        <div class="skills reveal">
+            <div class="skill">
+                <span class="f-num">01</span>
+                <h3>Web</h3>
+                <p>API REST avec authentification JWT, MVC, Blazor Server et WebAssembly.</p>
+                <div class="chips"><span class="chip">ASP.NET Core</span><span class="chip">Blazor</span><span class="chip">Symfony</span></div>
+            </div>
+            <div class="skill">
+                <span class="f-num">02</span>
+                <h3>Bureau &amp; console</h3>
+                <p>Applications métier, outils support, bot Discord, tests d'API automatisés.</p>
+                <div class="chips"><span class="chip">.NET</span><span class="chip">WinForms</span></div>
+            </div>
+            <div class="skill">
+                <span class="f-num">03</span>
+                <h3>Mobile</h3>
+                <p>Applications Android et iOS branchées sur une API, authentification Bearer.</p>
+                <div class="chips"><span class="chip">.NET MAUI</span></div>
+            </div>
+            <div class="skill">
+                <span class="f-num">04</span>
+                <h3>Outils &amp; données</h3>
+                <p>Git, CI/CD avec GitHub Actions, bases SQL de MySQL à SQL Server.</p>
+                <div class="chips"><span class="chip">GitHub Actions</span><span class="chip">MSSQL</span><span class="chip">MariaDB</span></div>
+            </div>
+        </div>
+    </div>
+</section>
 
-        <div class="row portfolio-container">
+<!-- ======= Chiffres ======= -->
+<section class="section section-soft" style="padding:88px 0">
+    <div class="wrap">
+        <div class="stats reveal">
+            <div class="stat"><b>@Model.YearsExperience</b><span>années d'expérience</span></div>
+            <div class="stat"><b>@Model.Projects.Count</b><span>projets publics</span></div>
+            <div class="stat"><b>2026</b><span>création de Noovio</span></div>
+        </div>
+    </div>
+</section>
 
+<!-- ======= Parcours ======= -->
+<section id="parcours" class="section">
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <span class="kicker">Parcours</span>
+            <h2>D'où je viens.</h2>
+            <p>Plusieurs années au support et à la hotline, au contact des utilisateurs, avant de passer au développement.</p>
+        </div>
+        <div class="tl reveal">
+            <div class="tl-row now">
+                <span class="y">2026</span>
+                <div><h3>Création de Noovio<span class="badge-now">Nouveau</span></h3><p>Ma micro-entreprise, sous laquelle tournent aidalap.fr et pulsemetrics.fr.</p></div>
+                <span class="co">Noovio</span>
+            </div>
+            <div class="tl-row now">
+                <span class="y">Depuis 2022</span>
+                <div><h3>Développeur logiciel &amp; support niveau II</h3><p>Conception et développement de logiciel métier, support niveau 2 et relation avec le niveau 3.</p></div>
+                <span class="co">Créagiciel · La Seyne-sur-Mer</span>
+            </div>
+            <div class="tl-row">
+                <span class="y">2018-2022</span>
+                <div><h3>Responsable support II · Dev web Symfony</h3><p>Gestion d'équipe, formation client, bugs et évolutions, outil de télégestion fullstack Symfony 5.</p></div>
+                <span class="co">Gentel Global Solutions · La Garde</span>
+            </div>
+            <div class="tl-row">
+                <span class="y">2014-2018</span>
+                <div><h3>Responsable support II · Technicien logiciel</h3><p>Gestion d'équipe, formation client, outils support en C#, salons professionnels.</p></div>
+                <span class="co">AidesNSoft · La Garde</span>
+            </div>
+            <div class="tl-row">
+                <span class="y">2012-2014</span>
+                <div><h3>Systèmes &amp; traitement d'obsolescences</h3><p>DUT GEII en alternance à l'IUT de Toulon : maintenance électronique, manuels utilisateur, configuration système et réseau.</p></div>
+                <span class="co">Naval Group · Base navale de Toulon</span>
+            </div>
+            <div class="tl-row">
+                <span class="y">2010-2012</span>
+                <div><h3>Licence Informatique, 1ʳᵉ année</h3><p>Université de Toulon.</p></div>
+                <span class="co">La Garde</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ======= Projets ======= -->
+<section id="projets" class="section" style="padding-top:0">
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <span class="kicker">Projets</span>
+            <h2>Ce que j'ai construit.</h2>
+            <p>Des projets pro et perso, des outils support des débuts jusqu'aux applications d'aujourd'hui.</p>
+        </div>
+        <div class="filters" role="group" aria-label="Filtrer les projets">
+            <button type="button" aria-pressed="true" data-filter="all">Tous</button>
+            <button type="button" aria-pressed="false" data-filter="net">.NET</button>
+            <button type="button" aria-pressed="false" data-filter="php">PHP</button>
+            <button type="button" aria-pressed="false" data-filter="other">Autres</button>
+        </div>
+        <div class="grid">
             @foreach (Project project in Model.Projects)
             {
-                <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                    <div class="portfolio-img">
-                        <img src="~/images/projects/@project.Image" class="img-fluid" alt="">
+                var url = ExternalUrl(project.Url);
+                <article class="pcard" data-cat="@Category(project.Language)">
+                    <div class="ph"><img src="~/images/projects/@project.Image" alt="Capture du projet @project.Title" loading="lazy"></div>
+                    <div class="bd">
+                        <div class="meta"><span>@project.Language.Replace("/", " · ")</span><span>@project.CreatedAt.Year</span></div>
+                        <h3>@project.Title</h3>
+                        <p>@project.Description</p>
+                        @if (url != null)
+                        {
+                            <a class="visit" href="@url" target="_blank" rel="noopener">Voir le site →</a>
+                        }
                     </div>
-                    <div class="portfolio-info">
-                        <h4>@project.Title</h4>
-                        <p>@project.Language</p>
-                        <a href="~/images/projects/@project.Image" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="@project.Description">
-                            <i class="bx bx-plus"></i>
-                        </a>
-                        @*<a asp-controller="Project" asp-action="Details" asp-route-id="@project.Id" class="details-link" title="More Details">
-                            <i class="bx bx-link"></i>
-                        </a>*@
-                    </div>
-                </div>
+                </article>
             }
-
-
-
         </div>
-
     </div>
-</section><!-- End My Portfolio Section -->
+</section>
 
-
-<!-- ======= Contact Me Section ======= -->
-<section id="contact" class="contact">
-    <div class="container">
-
-        <div class="section-title">
-            <span>CONTACT</span>
-            <h2>Contact</h2>
-            <p>
-                <i>Besoin d'information? Une envie de me contacter?</i>
-            </p>
+<!-- ======= FAQ ======= -->
+<section id="faq" class="section">
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <span class="kicker">FAQ</span>
+            <h2>En bref.</h2>
         </div>
+        <div class="faq reveal">
+            <details open>
+                <summary>Quelles technologies utilises-tu au quotidien ?</summary>
+                <p>Surtout l'écosystème .NET : C#, ASP.NET Core, Blazor et MAUI, avec SQL Server. J'ai aussi plusieurs années de Symfony/PHP derrière moi.</p>
+            </details>
+            <details>
+                <summary>Où es-tu basé ?</summary>
+                <p>À Toulon, dans le Var.</p>
+            </details>
+            <details>
+                <summary>Qu'est-ce que Noovio ?</summary>
+                <p>Ma micro-entreprise, créée en 2026. C'est sous ce nom que tournent aidalap.fr et pulsemetrics.fr.</p>
+            </details>
+            <details>
+                <summary>Tu as des projets perso ?</summary>
+                <p>Oui, toujours un ou deux en cours : en ce moment PulseMetrics, des outils Mythic+ pour World of Warcraft. Les autres sont dans la section Projets.</p>
+            </details>
+        </div>
+    </div>
+</section>
 
-        <div class="row">
+<!-- ======= Bande contact ======= -->
+<section class="wrap reveal">
+    <div class="band">
+        <div>
+            <h2>Une question, envie d'échanger ?</h2>
+            <p>Sur mon parcours, un projet ou juste pour discuter, mes coordonnées sont juste en dessous.</p>
+        </div>
+        <a href="#contact" class="btn btn-dark">
+            Me contacter
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+    </div>
+</section>
 
-            <div class="col-lg-6">
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="info-box">
-                            <i class="bx bx-share-alt"></i>
-                            <h3>Réseaux sociaux</h3>
-                            <div class="social-links">
-                                <a href="https://github.com/rampinflorian" class="github">
-                                    <i class="bi bi-github"></i>
-                                </a>
-                                <a href="https://www.facebook.com/florian.rampin.1" class="facebook">
-                                    <i class="bi bi-facebook"></i>
-                                </a>
-                                <a href="https://www.linkedin.com/in/florian-rampin-7070ba162" class="linkedin">
-                                    <i class="bi bi-linkedin"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="info-box mt-4">
-                            <i class="bx bx-envelope"></i>
-                            <h3>Par email</h3>
-                            <p>florian[at]rampin.me</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="info-box mt-4">
-                            <i class="bx bx-phone-call"></i>
-                            <h3>Par téléphone</h3>
-                            <p>(+33) 6 51 35 62 46</p>
-                        </div>
-                    </div>
-                </div>
-
+<!-- ======= Contact ======= -->
+<section id="contact" class="section">
+    <div class="wrap contact">
+        <div class="reveal">
+            <div class="sec-head" style="margin-bottom:32px">
+                <span class="kicker">Contact</span>
+                <h2>Me contacter.</h2>
+                <p>Par email, par téléphone ou avec le formulaire.</p>
             </div>
-
-            <div class="col-lg-6">
+            <div class="cinfo">
+                <a href="mailto:florian@rampin.me">
+                    <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+                    florian[at]rampin.me
+                </a>
+                <a href="tel:+33651356246">
+                    <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>
+                    +33 6 51 35 62 46
+                </a>
+            </div>
+        </div>
+        <div class="reveal">
             <div flashes></div>
-                <form class="contact-form" asp-action="Mailer" method="post">
-                    @Html.AntiForgeryToken()
-                    <div class="row">
-                        <div class="col-md-6 form-group">
-                            <input type="text" asp-for="mailer.Username" required="required" class="form-control" placeholder="Nom">
-                        </div>
-                        <div class="col-md-6 form-group mt-3 mt-md-0">
-                            @Html.ReCaptcha()
-                        </div>
-                        <div class="col-md-6 form-group mt-3 mt-md-0">
-                            <input type="email" class="form-control" asp-for="mailer.Mail" placeholder="Email" required>
-                        </div>
-                    </div>
-                    <div class="form-group mt-3">
-                        <textarea class="form-control" asp-for="mailer.Content" rows="6" placeholder="Message" required></textarea>
-                    </div>
-                    <div class="mt-3 text-center">
-                        <button class="btn btn-primary" type="submit">Envoyer</button>
-                    </div>
-                </form>
-            </div>
-
+            <form class="contact-form" asp-action="Mailer" method="post">
+                @Html.AntiForgeryToken()
+                <div class="field">
+                    <label asp-for="mailer.Username">Nom</label>
+                    <input type="text" asp-for="mailer.Username" required placeholder="Votre nom" autocomplete="name">
+                </div>
+                <div class="field">
+                    <label asp-for="mailer.Mail">Email</label>
+                    <input type="email" asp-for="mailer.Mail" required placeholder="vous@exemple.fr" autocomplete="email">
+                </div>
+                <div class="field">
+                    <label asp-for="mailer.Content">Message</label>
+                    <textarea asp-for="mailer.Content" rows="5" required placeholder="Votre message"></textarea>
+                </div>
+                @Html.ReCaptcha()
+                <button class="btn btn-green" type="submit">Envoyer le message</button>
+            </form>
         </div>
-
     </div>
-</section><!-- End Contact Me Section -->
+</section>
