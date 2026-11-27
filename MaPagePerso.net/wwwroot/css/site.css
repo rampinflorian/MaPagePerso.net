@@ -96,10 +96,6 @@ img { display: block; max-width: 100%; }
 .hero .lead { max-width: 620px; margin: 24px auto 0; font-size: 20px; color: var(--muted); }
 .hero .ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 36px; }
 .hero .micro { margin: 14px 0 0; font-size: 14px; color: var(--muted); }
-  margin: 64px auto 0; max-width: 1080px; border-radius: 18px 18px 0 0;
-  border: 1px solid var(--line); border-bottom: 0; background: var(--soft); padding: 12px 12px 0;
-  box-shadow: 0 -20px 80px -30px rgba(10, 117, 100, .25);
-}
 
 /* --- Bandeau déroulant -------------------------------------------------- */
 .marquee { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; padding: 26px 0; background: #fff; }
